@@ -1,0 +1,427 @@
+/**
+ * ==============================================================================
+ * KBTCOE Connect — REST API Test Client Stylesheet (style.css)
+ * Assignment 15: REST API and Database
+ *
+ * Color Palette:
+ * - Primary Navy:      #1E3A8A
+ * - Accent Blue:       #2563EB
+ * - Blue Hover:        #1D4ED8
+ * - Blue Tint:         #EFF6FF
+ * - Background:        #F8FAFC
+ * - Neutral Surface:   #FFFFFF
+ * - Neutral Border:    #E2E8F0
+ * - Text Primary:      #0F172A
+ * - Text Muted:        #475569
+ * - Success Green:     #059669
+ * - Danger Red:        #DC2626
+ * ==============================================================================
+ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #F8FAFC;
+  color: #0F172A;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* Header */
+.site-header {
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #E2E8F0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.header-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4.25rem;
+  gap: 1rem;
+}
+
+.brand-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-logo {
+  height: 2.3rem;
+  width: auto;
+}
+
+.header-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.badge-online { background-color: #ECFDF5; color: #065F46; border: 1px solid #A7F3D0; }
+.badge-offline { background-color: #FEF2F2; color: #991B1B; border: 1px solid #FECACA; }
+.badge-auth { background-color: #EFF6FF; color: #1E3A8A; border: 1px solid #BFDBFE; }
+
+.status-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-green { background-color: #10B981; }
+.dot-red { background-color: #EF4444; }
+
+/* Main Content */
+.main-layout {
+  flex: 1;
+  padding-top: 1.75rem;
+  padding-bottom: 3.5rem;
+}
+
+.hero-section {
+  margin-bottom: 1.5rem;
+}
+
+.lab-pill {
+  display: inline-block;
+  background-color: #EFF6FF;
+  color: #1E3A8A;
+  border: 1px solid #BFDBFE;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.35rem;
+}
+
+.page-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #1E3A8A;
+  margin-bottom: 0.25rem;
+}
+
+.page-desc {
+  color: #475569;
+  font-size: 0.95rem;
+}
+
+/* Tab Navigation */
+.tabs-nav {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 2px solid #E2E8F0;
+  margin-bottom: 1.75rem;
+}
+
+.tab-btn {
+  padding: 0.65rem 1.25rem;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #64748B;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: -2px;
+}
+
+.tab-btn:hover {
+  color: #1E3A8A;
+}
+
+.tab-btn.active {
+  color: #1E3A8A;
+  border-bottom-color: #2563EB;
+}
+
+/* Two-column layout */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 1.75rem;
+}
+
+@media (max-width: 960px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Cards & Panels */
+.panel-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  margin-bottom: 1.5rem;
+}
+
+.panel-heading {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #1E3A8A;
+  margin-bottom: 0.25rem;
+}
+
+.panel-subtext {
+  font-size: 0.825rem;
+  color: #64748B;
+  margin-bottom: 1.25rem;
+}
+
+/* Forms */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 0.3rem;
+}
+
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  font-family: inherit;
+  font-size: 0.875rem;
+  color: #0F172A;
+  background-color: #F8FAFC;
+  border: 1px solid #CBD5E1;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none;
+  background-color: #FFFFFF;
+  border-color: #2563EB;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.btn-primary-action {
+  width: 100%;
+  padding: 0.65rem 1.25rem;
+  background-color: #1E3A8A;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary-action:hover {
+  background-color: #2563EB;
+}
+
+.btn-secondary {
+  padding: 0.45rem 0.85rem;
+  background-color: #F1F5F9;
+  color: #475569;
+  border: 1px solid #CBD5E1;
+  border-radius: 0.375rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #E2E8F0;
+  color: #0F172A;
+}
+
+/* Live Inspector Console */
+.inspector-card {
+  background-color: #0F172A;
+  border: 1px solid #1E293B;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  color: #F8FAFC;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 5rem;
+}
+
+.inspector-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.65rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #334155;
+}
+
+.status-badge {
+  font-size: 0.725rem;
+  font-weight: 800;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.25rem;
+  font-family: Consolas, monospace;
+}
+
+.status-2xx { background-color: #065F46; color: #A7F3D0; }
+.status-4xx { background-color: #78350F; color: #FDE68A; }
+.status-5xx { background-color: #7F1D1D; color: #FECACA; }
+
+.inspector-pre {
+  background-color: #020617;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-family: Consolas, Monaco, monospace;
+  font-size: 0.785rem;
+  line-height: 1.5;
+  color: #38BDF8;
+  max-height: 480px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* Category Badges */
+.cat-badge {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cat-internship { background-color: #EFF6FF; color: #1E3A8A; border: 1px solid #BFDBFE; }
+.cat-hackathon { background-color: #FAF5FF; color: #6B21A8; border: 1px solid #E9D5FF; }
+.cat-competition { background-color: #FFF7ED; color: #C2410C; border: 1px solid #FFEDD5; }
+.cat-workshop { background-color: #ECFDF5; color: #065F46; border: 1px solid #A7F3D0; }
+.cat-technical { background-color: #EFF6FF; color: #1E3A8A; border: 1px solid #BFDBFE; }
+.cat-achievement { background-color: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; }
+.cat-event { background-color: #FDF2F8; color: #9D174D; border: 1px solid #FBCFE8; }
+.cat-general { background-color: #F1F5F9; color: #475569; border: 1px solid #CBD5E1; }
+
+/* Grid of Cards */
+.cards-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.item-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 0.65rem;
+  padding: 1.15rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.item-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+}
+
+.item-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1E3A8A;
+  margin-bottom: 0.2rem;
+}
+
+.item-card-meta {
+  font-size: 0.8rem;
+  color: #64748B;
+  margin-bottom: 0.65rem;
+}
+
+.item-card-body {
+  font-size: 0.85rem;
+  color: #334155;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+
+.item-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #F1F5F9;
+  padding-top: 0.65rem;
+}
+
+.btn-card-delete {
+  padding: 0.25rem 0.6rem;
+  background-color: #FEF2F2;
+  color: #DC2626;
+  border: 1px solid #FECACA;
+  border-radius: 0.25rem;
+  font-size: 0.775rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-card-delete:hover {
+  background-color: #FEE2E2;
+}
+
+/* Footer */
+.site-footer {
+  margin-top: auto;
+  background-color: #FFFFFF;
+  border-top: 1px solid #E2E8F0;
+  padding: 1.5rem 0;
+  font-size: 0.85rem;
+  color: #64748B;
+}
+
+.footer-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}

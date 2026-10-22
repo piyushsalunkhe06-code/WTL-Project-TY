@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KBTCOE Connect — Express REST API Dashboard (Assignment 14)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-flex">
+      <div class="brand-container">
+        <img src="kbtcoe-logo.svg" alt="KBTCOE Connect Logo" class="brand-logo">
+      </div>
+      <div id="healthBadge" class="api-pill api-offline">
+        <span id="healthDot" class="status-dot red-dot"></span>
+        <span id="healthText">Checking Server...</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main class="main-layout container">
+    <section class="hero-section">
+      <span class="lab-badge">Assignment 14 &bull; Node.js &amp; Express REST Server</span>
+      <h1 class="page-title">KBTCOE Connect Backend API Dashboard</h1>
+      <p class="page-desc">
+        Interactive demonstration console for the Express.js REST API. Exercise HTTP routes, test request/response middleware, and observe in-memory data state.
+      </p>
+    </section>
+
+    <!-- Quick Action Triggers Bar -->
+    <section class="actions-card" aria-label="API Endpoint Triggers">
+      <h2 class="actions-title">Interactive API Route Triggers</h2>
+      <div class="actions-btn-group">
+        <button type="button" class="btn-endpoint" id="btnGetAll">
+          <span class="method-tag method-get">GET</span> /api/opportunities
+        </button>
+        <button type="button" class="btn-endpoint" id="btnGetHealth">
+          <span class="method-tag method-get">GET</span> /api/health
+        </button>
+        <button type="button" class="btn-endpoint" id="btnGetSingle">
+          <span class="method-tag method-get">GET</span> /api/opportunities/1
+        </button>
+        <button type="button" class="btn-endpoint" id="btnGet404">
+          <span class="method-tag method-get">GET</span> /api/opportunities/999 (404)
+        </button>
+        <button type="button" class="btn-endpoint" id="btnTestRoute404">
+          <span class="method-tag method-get">GET</span> /api/undefined-endpoint
+        </button>
+        <button type="button" class="btn-endpoint" id="btnTestBadJson">
+          <span class="method-tag method-post">POST</span> Test Malformed JSON (400)
+        </button>
+      </div>
+    </section>
+
+    <!-- Two-Column Playground -->
+    <div class="dashboard-grid">
+      <!-- Create Opportunity Form Card -->
+      <section class="form-card" aria-label="Create Opportunity Form">
+        <h2 class="card-heading">Create Opportunity</h2>
+        <p class="card-subtext">POST <code>/api/opportunities</code> with JSON request payload</p>
+
+        <form id="createForm" novalidate>
+          <div class="form-group">
+            <label for="title" class="form-label">
+              Opportunity Title <span class="required-star">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="title" 
+              name="title" 
+              class="form-input" 
+              placeholder="e.g. Cisco Cyber Security Internship 2026"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="organization" class="form-label">
+              Host Organization / Department <span class="required-star">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="organization" 
+              name="organization" 
+              class="form-input" 
+              placeholder="e.g. Cisco Systems India"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="category" class="form-label">
+              Category <span class="required-star">*</span>
+            </label>
+            <select id="category" name="category" class="form-select" required>
+              <option value="">-- Select Category --</option>
+              <option value="internship">Internship</option>
+              <option value="hackathon">Hackathon</option>
+              <option value="competition">Competition</option>
+              <option value="workshop">Workshop</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="description" class="form-label">
+              Description <span class="required-star">*</span>
+            </label>
+            <textarea 
+              id="description" 
+              name="description" 
+              class="form-textarea" 
+              placeholder="Summary of project tasks, deliverables, or workshop topics..."
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="deadline" class="form-label">
+              Application Deadline (YYYY-MM-DD)
+            </label>
+            <input 
+              type="date" 
+              id="deadline" 
+              name="deadline" 
+              class="form-input"
+            >
+          </div>
+
+          <button type="submit" class="btn-primary-submit" id="btnSubmit">
+            POST Opportunity via Express
+          </button>
+        </form>
+      </section>
+
+      <!-- Live JSON Inspector Card -->
+      <section class="inspector-card" aria-label="API Response Inspector">
+        <div class="inspector-header">
+          <span class="inspector-title">Live API Response Inspector</span>
+          <span id="responseStatusBadge" class="status-tag status-2xx">HTTP 200 OK</span>
+        </div>
+        <div style="font-size: 0.75rem; color: #94A3B8; margin-bottom: 0.5rem;" id="responseMeta">
+          Request: GET /api/health &bull; Duration: 2ms
+        </div>
+        <pre id="responseOutput" class="inspector-pre">Loading initial API health state...</pre>
+      </section>
+    </div>
+
+    <!-- Active Opportunities Collection -->
+    <section class="list-section" aria-label="Active In-Memory Opportunities">
+      <div class="list-header-row">
+        <div>
+          <h2 style="font-size: 1.35rem; font-weight: 800; color: #1E3A8A;">In-Memory Opportunity Records</h2>
+          <p style="font-size: 0.85rem; color: #64748B;" id="recordCountText">Loading opportunities from server...</p>
+        </div>
+        <div>
+          <button type="button" class="btn-endpoint" id="btnRefreshList">
+            &#8635; Refresh Collection
+          </button>
+        </div>
+      </div>
+
+      <div id="opportunitiesGrid" class="list-grid">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-flex">
+      <div>
+        <strong>KBTCOE Connect</strong> &bull; Assignment 14: Node.js &amp; Express REST Backend
+      </div>
+      <div>
+        Department of Information Technology &bull; MVPS's KBTCOE Nashik
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,546 @@
+/* ==========================================================================
+   KBTCOE Connect — Positioning & Advanced CSS Stylesheet (positioning.css)
+   Assignment 05: CSS Positioning & Other CSS Properties
+   Demonstrates: static, relative, absolute, fixed, sticky, z-index,
+                 overflow, opacity, box-shadow, transform, and transition.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Global Resets & Typography
+   -------------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #0F172A;
+  background-color: #F8FAFC;
+  line-height: 1.6;
+  min-height: 180vh; /* Deliberately tall to enable ample scrolling for sticky nav and fixed FAB testing */
+  overflow-x: hidden; /* Demonstrating overflow property */
+}
+
+/* Base Typographic Selectors */
+h1, h2, h3, h4 {
+  color: #1E3A8A;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+p {
+  color: #334155;
+  margin-bottom: 0.85rem;
+}
+
+a {
+  color: #2563EB;
+  text-decoration: none;
+  transition: color 0.2s ease; /* Transition property */
+}
+
+a:hover {
+  color: #1D4ED8;
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  width: 92%;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   2. PROPERTY DEMO: position: static (Normal Document Flow)
+   -------------------------------------------------------------------------- */
+/* Static positioning is the default browser flow. Top, right, bottom, left,
+   and z-index have NO effect on static elements. */
+.demo-card-static {
+  position: static;
+  background-color: #F1F5F9;
+  border: 1px dashed #94A3B8;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+}
+
+.demo-card-static h4 {
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   3. PROPERTY DEMO: position: sticky with z-index (Sticky Navigation Bar)
+   -------------------------------------------------------------------------- */
+/* Sticks to the viewport at top: 0 once scrolled past, staying within its container flow */
+.sticky-nav-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 100; /* Stacking order: above normal content, below modal & FAB */
+  background-color: #1E3A8A;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* box-shadow property */
+  transition: background-color 0.3s ease; /* transition property */
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.nav-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-logo-img {
+  max-width: 220px;
+  height: auto;
+}
+
+.sticky-badge {
+  background-color: #F59E0B;
+  color: #78350F;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 16px;
+}
+
+.nav-menu-link {
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-menu-link:hover {
+  background-color: #2563EB;
+  color: #FFFFFF;
+  text-decoration: none;
+  transform: translateY(-1px); /* transform property */
+}
+
+/* --------------------------------------------------------------------------
+   4. PROPERTY DEMO: position: relative & position: absolute
+   (Avatar Status Badge and Card Ribbon)
+   -------------------------------------------------------------------------- */
+/* .card utilizes position: relative to serve as the containing block for absolute children */
+.card-relative {
+  position: relative;
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08); /* box-shadow */
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease; /* transition */
+  overflow: hidden; /* overflow control for corner ribbon */
+}
+
+.card-relative:hover {
+  transform: translateY(-4px); /* transform */
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05); /* box-shadow */
+}
+
+/* Absolute Corner Ribbon (positioned relative to .card-relative) */
+.ribbon-absolute {
+  position: absolute;
+  top: 14px;
+  right: -32px;
+  width: 120px;
+  background-color: #2563EB;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 4px 0;
+  transform: rotate(45deg); /* transform rotate */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+/* Avatar Wrapper (Relatively Positioned Containing Block) */
+.avatar-container {
+  position: relative;
+  display: inline-block;
+  width: 76px;
+  height: 76px;
+}
+
+.avatar-image {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  border: 2px solid #2563EB;
+}
+
+/* Status Badge (Position: absolute relative to .avatar-container) */
+.status-badge-absolute {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  background-color: #16A34A; /* Green for online */
+  color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+  border-radius: 12px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  line-height: 1.2;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  z-index: 5;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* --------------------------------------------------------------------------
+   5. PROPERTY DEMO: overflow (Scrollable Code & Technical Preview)
+   -------------------------------------------------------------------------- */
+/* Demonstrates overflow-y: auto with constrained max-height to handle long content */
+.scrollable-preview-box {
+  max-height: 160px;
+  overflow-y: auto; /* overflow control */
+  overflow-x: hidden;
+  background-color: #0F172A;
+  color: #E2E8F0;
+  padding: 14px 16px;
+  border-radius: 6px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  border: 1px solid #334155;
+  margin: 12px 0;
+}
+
+/* Custom WebKit Scrollbar Styling for overflow demonstration */
+.scrollable-preview-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollable-preview-box::-webkit-scrollbar-track {
+  background: #1E293B;
+  border-radius: 4px;
+}
+
+.scrollable-preview-box::-webkit-scrollbar-thumb {
+  background: #3B82F6;
+  border-radius: 4px;
+}
+
+.scrollable-preview-box::-webkit-scrollbar-thumb:hover {
+  background: #60A5FA;
+}
+
+/* --------------------------------------------------------------------------
+   6. PROPERTY DEMO: opacity & subtle state indicators
+   -------------------------------------------------------------------------- */
+.muted-timestamp {
+  font-size: 0.8rem;
+  color: #64748B;
+  opacity: 0.85; /* opacity property */
+  transition: opacity 0.2s ease;
+}
+
+.muted-timestamp:hover {
+  opacity: 1; /* opacity transition on hover */
+}
+
+.btn-disabled-demo {
+  opacity: 0.55; /* opacity property */
+  cursor: not-allowed !important;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   7. PROPERTY DEMO: position: fixed (Floating Action Button - FAB)
+   -------------------------------------------------------------------------- */
+/* Fixed in the bottom-right corner of the viewport, independent of page scroll */
+.fab-button {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 500; /* Stacking: above sticky nav & cards, below modal overlay */
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%);
+  color: #FFFFFF;
+  border: none;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.45); /* box-shadow */
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.75rem;
+  line-height: 1;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s ease; /* transition */
+}
+
+.fab-button:hover {
+  transform: scale(1.1) rotate(90deg); /* transform scale & rotate */
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.6);
+}
+
+.fab-button:active {
+  transform: scale(0.95);
+}
+
+.fab-tooltip {
+  position: absolute;
+  right: 70px;
+  background-color: #0F172A;
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform: translateX(10px);
+}
+
+.fab-button:hover .fab-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* --------------------------------------------------------------------------
+   8. PROPERTY DEMO: Modal Overlay (fixed, z-index: 1000, absolute centering)
+   -------------------------------------------------------------------------- */
+/* Backdrop covers entire viewport using position: fixed and top/bottom/left/right: 0 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(15, 23, 42, 0.65); /* Dark translucent backdrop */
+  z-index: 1000; /* Stacking: highest layer in document */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* transition */
+}
+
+/* Active State for Modal */
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Modal Dialog Box centered with fixed coordinates and transform */
+.modal-box {
+  position: relative; /* Containing block for absolute close button */
+  background-color: #FFFFFF;
+  width: 90%;
+  max-width: 520px;
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25), 0 8px 10px -6px rgba(0, 0, 0, 0.1); /* box-shadow */
+  z-index: 1001; /* Stacking: above overlay backdrop */
+  transform: scale(0.9) translateY(20px); /* transform initial state */
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* smooth spring transition */
+}
+
+.modal-overlay.active .modal-box {
+  transform: scale(1) translateY(0); /* transform active state */
+}
+
+/* Close Button (position: absolute in top right of modal-box) */
+.modal-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: #F1F5F9;
+  border: none;
+  font-size: 1.25rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #64748B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  background-color: #E2E8F0;
+  color: #0F172A;
+  transform: rotate(90deg);
+}
+
+.modal-title {
+  font-size: 1.35rem;
+  color: #1E3A8A;
+  margin-bottom: 6px;
+}
+
+.modal-desc {
+  font-size: 0.88rem;
+  color: #64748B;
+  margin-bottom: 20px;
+}
+
+/* Modal Form Styles */
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1E293B;
+  margin-bottom: 4px;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #CBD5E1;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #2563EB;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* --------------------------------------------------------------------------
+   9. Buttons and UI Components
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary {
+  background-color: #1E3A8A;
+  color: #FFFFFF;
+}
+
+.btn-primary:hover {
+  background-color: #1E40AF;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(30, 58, 138, 0.3);
+}
+
+.btn-secondary {
+  background-color: #F1F5F9;
+  color: #334155;
+  border-color: #CBD5E1;
+}
+
+.btn-secondary:hover {
+  background-color: #E2E8F0;
+  color: #0F172A;
+}
+
+.badge-tag {
+  display: inline-block;
+  background-color: #EFF6FF;
+  color: #1E40AF;
+  border: 1px solid #BFDBFE;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-right: 6px;
+}
+
+/* Table styling for Opportunity Bulletin */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 14px;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #E2E8F0;
+  font-size: 0.88rem;
+  text-align: left;
+}
+
+.styled-table th {
+  background-color: #F8FAFC;
+  color: #1E3A8A;
+  font-weight: 600;
+}
+
+/* Site Footer */
+.footer-section {
+  background-color: #0F172A;
+  color: #94A3B8;
+  padding: 32px 0 20px 0;
+  margin-top: 60px;
+  font-size: 0.88rem;
+}
+
+.footer-section a {
+  color: #60A5FA;
+}

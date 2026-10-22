@@ -1,0 +1,14 @@
+# Dependency directories
+node_modules/
+
+# Local environment configuration (contains credentials)
+.env
+
+# Logs and debugging
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Operating system files
+.DS_Store
+Thumbs.db

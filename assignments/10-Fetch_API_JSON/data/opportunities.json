@@ -1,0 +1,110 @@
+[
+  {
+    "id": "opp-101",
+    "title": "Smart Campus Innovation Hackathon 2026",
+    "type": "Hackathon",
+    "organization": "KBTCOE Institution's Innovation Council (IIC)",
+    "description": "A 36-hour continuous collegiate hackathon challenging multidisciplinary student squads to build scalable software and IoT hardware prototypes addressing campus sustainability, energy metering, and library automation.",
+    "eligibility": "Open to FE, SE, TE & BE Students of All Engineering Disciplines",
+    "deadline": "November 25, 2026 (Sample Demonstration Deadline)",
+    "location": "KBTCOE Main Auditorium & Robotics Lab, Nashik",
+    "reward": "₹45,000 Total Prize Pool + Incubation Support",
+    "tags": ["IoT", "React", "Python", "Hardware", "Smart Campus"]
+  },
+  {
+    "id": "opp-102",
+    "title": "Full-Stack Cloud Systems Summer Internship",
+    "type": "Internship",
+    "organization": "TechSprint Cloud Labs (Industry Academic Partner)",
+    "description": "An intensive 8-week paid summer internship program working directly alongside senior cloud architects to build high-throughput microservices using Node.js, Docker, Kubernetes, and AWS services.",
+    "eligibility": "TE & BE Students (Computer, IT, and AI & Data Science)",
+    "deadline": "December 05, 2026 (Sample Demonstration Deadline)",
+    "location": "Nashik / Pune (Hybrid)",
+    "reward": "₹15,000 / month Stipend + Pre-Placement Interview Opportunity",
+    "tags": ["Node.js", "Docker", "Kubernetes", "AWS", "REST APIs"]
+  },
+  {
+    "id": "opp-103",
+    "title": "State-Level Bridge Structural Design Championship",
+    "type": "Competition",
+    "organization": "Maharashtra Civil Engineering Student Federation",
+    "description": "Inter-college engineering contest evaluating student teams on structural analysis, load simulation, and drafting of sustainable pedestrian cable-stayed bridges using modern CAD and FEM tools.",
+    "eligibility": "SE, TE & BE Students (Civil & Mechanical Engineering)",
+    "deadline": "December 18, 2026 (Sample Demonstration Deadline)",
+    "location": "Civil Engineering Department, KBTCOE Campus",
+    "reward": "Trophy + ₹25,000 Cash Prize + Meritorious Certificate",
+    "tags": ["AutoCAD", "STAAD Pro", "Structural Analysis", "Civil Design"]
+  },
+  {
+    "id": "opp-104",
+    "title": "Hands-On Industrial Automation & PLC/SCADA Workshop",
+    "type": "Workshop",
+    "organization": "Department of Instrumentation & Control",
+    "description": "A comprehensive 3-day practical bootcamp covering programmable logic controllers (PLCs), ladder logic programming, industrial sensor telemetry, and SCADA supervisory control screens.",
+    "eligibility": "All Engineering Undergraduates (Limited to 60 seats)",
+    "deadline": "December 22, 2026 (Sample Demonstration Deadline)",
+    "location": "Industrial Automation Lab, KBTCOE",
+    "reward": "National Council Recognized Skill Certificate",
+    "tags": ["PLC", "SCADA", "Sensors", "Industrial Automation", "LabVIEW"]
+  },
+  {
+    "id": "opp-105",
+    "title": "Applied Computer Vision & Edge AI Fellowship",
+    "type": "Internship",
+    "organization": "AgriVision AI Research Labs",
+    "description": "A 10-week technical research internship training deep learning vision models on drone imagery for early crop pest detection and deploying lightweight quantized neural networks onto Raspberry Pi edge nodes.",
+    "eligibility": "TE & BE Students (AI & DS, Comp, IT, or E&TC)",
+    "deadline": "January 10, 2027 (Sample Demonstration Deadline)",
+    "location": "Remote / College AI Research Cell",
+    "reward": "₹12,000 / month Stipend + Co-authorship in IEEE Paper",
+    "tags": ["PyTorch", "Computer Vision", "Deep Learning", "Edge AI", "Python"]
+  },
+  {
+    "id": "opp-106",
+    "title": "Formula Student Electric Vehicle CAD Challenge",
+    "type": "Competition",
+    "organization": "SAE Western India Collegiate Section",
+    "description": "Design competition challenging student engineers to model an aerodynamic, lightweight battery enclosure and composite chassis space frame adhering to formula student EV safety regulations.",
+    "eligibility": "Undergraduate Teams of 2–4 Students",
+    "deadline": "January 15, 2027 (Sample Demonstration Deadline)",
+    "location": "Virtual Submission + Physical Presentation",
+    "reward": "₹30,000 Cash Prize + Technical Sponsorship for SAE BAJA",
+    "tags": ["SolidWorks", "ANSYS", "EV", "FEA", "Mechanical Design"]
+  },
+  {
+    "id": "opp-107",
+    "title": "Cybersecurity & Web Penetration Testing Masterclass",
+    "type": "Workshop",
+    "organization": "KBTCOE InfoSec Student Chapter",
+    "description": "An interactive weekend masterclass demonstrating OWASP Top 10 web vulnerabilities, SQL injection mitigation, JWT authentication security, and Capture The Flag (CTF) defensive techniques.",
+    "eligibility": "All Students with Basic Web & Networking Knowledge",
+    "deadline": "January 20, 2027 (Sample Demonstration Deadline)",
+    "location": "Computer Center Lab 3, KBTCOE",
+    "reward": "Hands-on CTF Badge + Certificate of Completion",
+    "tags": ["Cybersecurity", "Penetration Testing", "Linux", "OWASP", "Ethical Hacking"]
+  },
+  {
+    "id": "opp-108",
+    "title": "National Smart City IoT Telemetry Innovation Sprint",
+    "type": "Hackathon",
+    "organization": "Nashik Municipal Smart City Development Corporation",
+    "description": "48-hour open innovation sprint inviting engineering innovators to prototype municipal water flow monitoring, smart street lighting grids, and air pollution sensory nodes across urban sectors.",
+    "eligibility": "Teams of 3–5 Undergraduate Students",
+    "deadline": "February 02, 2027 (Sample Demonstration Deadline)",
+    "location": "Nashik Smart City Incubation Center",
+    "reward": "₹1,00,000 Pilot Deployment Grant + Municipal Mentorship",
+    "tags": ["IoT", "Embedded C", "Telemetry", "Smart City", "LoRaWAN"]
+  },
+  {
+    "id": "opp-109",
+    "title": "Mobile App UI/UX Design & Flutter Developer Internship",
+    "type": "Internship",
+    "organization": "CampusNexus Digital Solutions",
+    "description": "A 12-week development internship building accessible, cross-platform Android & iOS student companion tools with responsive Flutter interfaces, Firebase real-time synchronization, and Figma design systems.",
+    "eligibility": "SE, TE & BE Students",
+    "deadline": "February 12, 2027 (Sample Demonstration Deadline)",
+    "location": "Hybrid (KBTCOE Incubation Wing / Remote)",
+    "reward": "₹14,000 / month Stipend + Google Play Store Publication",
+    "tags": ["Flutter", "Dart", "Firebase", "UI/UX", "Mobile Development"]
+  }
+]

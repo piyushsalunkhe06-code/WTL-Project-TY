@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KBTCOE Connect Opportunity Explorer — Asynchronous JSON processing and Fetch API practical demonstration for Assignment 10.">
+  <title>Opportunity Explorer — KBTCOE Connect | Assignment 10</title>
+  
+  <!-- External CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Deferred Vanilla JavaScript Engine -->
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" style="position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; z-index: 1000;">Skip to main content</a>
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="container header-flex">
+      <div class="brand-container">
+        <img src="kbtcoe-logo.svg" alt="KBTCOE Connect Logo" class="brand-logo" width="240" height="42">
+      </div>
+      <div class="badge-container">
+        <span class="lab-badge">Assignment 10 — Fetch API &amp; JSON</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main id="main-content" class="container">
+    
+    <!-- Hero Header -->
+    <header class="page-hero">
+      <h1 class="page-title">Campus Opportunity Explorer</h1>
+      <p class="page-subtitle">
+        Discover verified engineering internships, national hackathons, collegiate structural competitions, and practical skill-building workshops.
+      </p>
+      <span class="demo-badge">Asynchronous Fetch API • JSON Resource Processing • Promises</span>
+    </header>
+
+    <!-- Local Server Protocol Warning (Shown automatically if opened directly via file://) -->
+    <aside id="corsProtocolNotice" class="cors-notice-card" hidden role="note">
+      <strong>⚠️ Local Execution Notice (Browser CORS Security):</strong> You have opened this page directly using the <code>file://</code> protocol. Many modern web browsers block asynchronous <code>fetch()</code> requests to local JSON files due to cross-origin security policies.
+      <br>
+      To view live JSON data, run a lightweight local HTTP server from this directory:
+      <br>
+      <code>python -m http.server 8000</code> &nbsp;or&nbsp; <code>npx serve .</code> &nbsp;then open <strong>http://localhost:8000/</strong>
+    </aside>
+
+    <!-- Search & Filter Controls -->
+    <section class="controls-card" aria-label="Opportunity Search and Filters">
+      <form class="controls-flex" onsubmit="event.preventDefault();" role="search">
+        
+        <!-- Keyword Search -->
+        <div class="form-group-search">
+          <label for="searchInput" class="form-label">Search Opportunities</label>
+          <input 
+            type="search" 
+            id="searchInput" 
+            class="form-input" 
+            placeholder="Search by title, organization, tags, or keywords..."
+            autocomplete="off"
+            aria-label="Search opportunities by keyword, organization, or tag"
+          >
+        </div>
+
+        <!-- Type Filter Dropdown -->
+        <div class="form-group-type">
+          <label for="typeFilter" class="form-label">Filter by Opportunity Type</label>
+          <select id="typeFilter" class="form-select" aria-label="Filter opportunities by category type">
+            <option value="all">All Opportunity Types</option>
+            <option value="Internship">Internship</option>
+            <option value="Hackathon">Hackathon</option>
+            <option value="Competition">Competition</option>
+            <option value="Workshop">Workshop</option>
+          </select>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="form-group-actions">
+          <button type="button" id="btnRefresh" class="btn-ctrl btn-refresh" aria-label="Reload opportunities data from server">
+            🔄 Refresh
+          </button>
+          <button type="button" id="btnReset" class="btn-ctrl btn-reset" aria-label="Reset search and filters">
+            Clear Filters
+          </button>
+          <button type="button" id="btnSimulateError" class="btn-ctrl btn-simulate-error" title="Simulates a 404 HTTP Error to demonstrate error recovery & Retry button">
+            ⚡ Simulate Error
+          </button>
+        </div>
+
+      </form>
+    </section>
+
+    <!-- Results Status Bar -->
+    <div class="results-summary-bar" aria-live="polite">
+      <div>Showing <span id="resultsCount" class="results-count">--</span> opportunity card(s)</div>
+      <div id="filterStatus" class="filter-status">Status: Initializing...</div>
+    </div>
+
+    <!-- Dynamic Container for Opportunity Cards, Loading Spinner, or Error Box -->
+    <section id="opportunitiesContainer" class="opportunities-grid" aria-live="polite" aria-label="Opportunities Grid">
+      <!-- Fallback noscript message -->
+      <noscript>
+        <div class="state-card state-error">
+          <h3 class="state-title error-title">JavaScript Required</h3>
+          <p class="state-desc">
+            Please enable JavaScript in your browser to fetch and render opportunities using the Fetch API.
+          </p>
+        </div>
+      </noscript>
+    </section>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container footer-flex">
+      <div class="footer-left">
+        <p>&copy; 2026 KBTCOE Connect — MVPS's KBT College of Engineering, Nashik. Practical Assignment 10.</p>
+        <p style="font-size: 0.8rem; color: #64748B;">Demonstrating Fetch API, Promises, async/await, response.ok, and Safe DOM Text Rendering.</p>
+      </div>
+      <div class="footer-right">
+        <span class="tech-badge">Vanilla JS Fetch API &amp; JSON</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KBTCOE Connect Student Directory — Interactive student network built with vanilla JavaScript for Practical Assignment 06.">
+  <title>Student Directory — KBTCOE Connect | Assignment 06</title>
+  
+  <!-- External CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Deferred JavaScript Application Logic -->
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="skip-link" style="position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; z-index: 1000;">Skip to main content</a>
+
+  <!-- Global Site Header -->
+  <header class="site-header">
+    <div class="container header-flex">
+      <div class="brand-container">
+        <img src="kbtcoe-logo.svg" alt="KBTCOE Connect Logo" class="brand-logo" width="240" height="42">
+      </div>
+      <div class="lab-badge-container">
+        <span class="lab-badge">Assignment 06 — JavaScript Basics</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main id="main-content" class="container">
+    
+    <!-- Hero Header -->
+    <header class="page-hero">
+      <h1 class="page-title">Student Directory &amp; Peer Network</h1>
+      <p class="page-subtitle">
+        Explore student profiles, search by technical expertise, filter by engineering branch, and discover campus innovators.
+      </p>
+    </header>
+
+    <!-- Top Statistics Dashboard (Computed dynamically via JavaScript Array methods) -->
+    <section class="stats-grid" aria-label="Directory Statistics Overview">
+      <article class="stat-card">
+        <span class="stat-label">Total Students</span>
+        <span class="stat-value" id="statTotalStudents">--</span>
+        <span class="stat-desc">Registered Profiles</span>
+      </article>
+
+      <article class="stat-card">
+        <span class="stat-label">Matching Profiles</span>
+        <span class="stat-value" id="statMatchingStudents">--</span>
+        <span class="stat-desc">Current Filter View</span>
+      </article>
+
+      <article class="stat-card">
+        <span class="stat-label">Active Branches</span>
+        <span class="stat-value" id="statBranches">--</span>
+        <span class="stat-desc">Engineering Departments</span>
+      </article>
+
+      <article class="stat-card">
+        <span class="stat-label">Unique Skills</span>
+        <span class="stat-value" id="statSkills">--</span>
+        <span class="stat-desc">Cataloged Technologies</span>
+      </article>
+    </section>
+
+    <!-- Search & Filter Controls -->
+    <section class="controls-card" aria-label="Student Directory Filters">
+      <form class="controls-flex" onsubmit="event.preventDefault();" role="search">
+        <!-- Search Input -->
+        <div class="form-group">
+          <label for="searchInput" class="form-label">Search Students</label>
+          <input 
+            type="search" 
+            id="searchInput" 
+            class="form-input" 
+            placeholder="Search by name, skill, or keyword..." 
+            autocomplete="off"
+            aria-label="Search students by name, skill, or keyword"
+          >
+        </div>
+
+        <!-- Branch Select Filter -->
+        <div class="form-group form-group-branch">
+          <label for="branchFilter" class="form-label">Filter by Branch</label>
+          <select id="branchFilter" class="form-select" aria-label="Filter students by engineering branch">
+            <option value="all">All Branches (All Departments)</option>
+          </select>
+        </div>
+
+        <!-- Reset Button -->
+        <button type="button" id="resetBtn" class="btn-reset" aria-label="Reset search and branch filters">
+          Reset Filters
+        </button>
+      </form>
+    </section>
+
+    <!-- Live Results Summary Bar -->
+    <div class="results-summary-bar" aria-live="polite">
+      <div>Showing <span id="resultsCount" class="results-count">0</span> student profile(s)</div>
+      <div id="filterStatus" class="filter-status">Filtered by: All Branches</div>
+    </div>
+
+    <!-- Student Cards Grid Container (Populated dynamically by JavaScript) -->
+    <section id="studentGrid" class="student-grid" aria-live="polite" aria-label="Student Profiles Grid">
+      <!-- Fallback noscript message for non-JS browsers -->
+      <noscript>
+        <div class="empty-state" style="grid-column: 1 / -1;">
+          <h3 class="empty-title">JavaScript Required</h3>
+          <p class="empty-desc">
+            Please enable JavaScript in your browser to view the interactive student directory, live search, and filtering features.
+          </p>
+        </div>
+      </noscript>
+    </section>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-flex">
+      <p>&copy; 2026 KBTCOE Connect — MVPS's KBT College of Engineering, Nashik. Practical Assignment 06.</p>
+      <p>Demonstrating Vanilla JavaScript Variables, Functions, Array Methods, and Safe DOM Manipulation.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

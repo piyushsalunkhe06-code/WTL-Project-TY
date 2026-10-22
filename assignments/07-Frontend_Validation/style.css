@@ -1,0 +1,484 @@
+/* ==========================================================================
+   KBTCOE Connect — Student Registration & Form Validation Stylesheet
+   Assignment 07: Frontend Validation
+   Palette: Navy #1E3A8A, Blue #2563EB, Surface #F8FAFC, Border #E2E8F0
+   Status Palette: Error #DC2626 / #FEF2F2, Success #16A34A / #F0FDF4
+   ========================================================================== */
+
+/* 1. Reset & Global Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #0F172A;
+  background-color: #F8FAFC;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* 2. Container Layout */
+.container {
+  width: 92%;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* 3. Site Header */
+.site-header {
+  background-color: #FFFFFF;
+  border-bottom: 2px solid #E2E8F0;
+  padding: 16px 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.brand-logo {
+  max-width: 260px;
+  height: auto;
+}
+
+.lab-badge {
+  background-color: #EFF6FF;
+  color: #1E3A8A;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid #BFDBFE;
+}
+
+/* 4. Page Hero Section */
+.page-hero {
+  padding: 28px 0 20px 0;
+  text-align: center;
+}
+
+.page-title {
+  font-size: 1.85rem;
+  color: #1E3A8A;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.page-subtitle {
+  color: #475569;
+  font-size: 0.98rem;
+  max-width: 680px;
+  margin: 0 auto 12px auto;
+}
+
+.demo-disclaimer-badge {
+  display: inline-block;
+  background-color: #FEF3C7;
+  color: #92400E;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 16px;
+  border: 1px solid #FDE68A;
+}
+
+/* 5. Registration Card */
+.form-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 32px 36px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  margin-bottom: 40px;
+}
+
+.form-header {
+  border-bottom: 1px solid #E2E8F0;
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.form-header h2 {
+  font-size: 1.35rem;
+  color: #1E3A8A;
+  font-weight: 700;
+}
+
+.form-header p {
+  color: #64748B;
+  font-size: 0.88rem;
+  margin-top: 4px;
+}
+
+/* 6. Form Fields & Responsive Grid */
+.form-grid-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.form-grid-row .form-group {
+  margin-bottom: 0;
+}
+
+.form-label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #1E293B;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.required-mark {
+  color: #DC2626;
+  margin-left: 4px;
+}
+
+/* Input & Select Controls */
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: #0F172A;
+  background-color: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 6px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+/* Accessible Focus States */
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: #2563EB;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* Success State on Fields */
+.form-input.input-success,
+.form-select.input-success {
+  border-color: #16A34A;
+  background-color: #F0FDF4;
+}
+
+.form-input.input-success:focus,
+.form-select.input-success:focus {
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+}
+
+/* Error State on Fields (distinguished not by color alone) */
+.form-input.input-error,
+.form-select.input-error {
+  border-color: #DC2626;
+  background-color: #FEF2F2;
+}
+
+.form-input.input-error:focus,
+.form-select.input-error:focus {
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2);
+}
+
+/* Field Hints & Descriptive Assistance */
+.field-hint {
+  font-size: 0.78rem;
+  color: #64748B;
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+/* Field Level Error Message Box */
+.field-error {
+  display: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #991B1B;
+  background-color: #FEF2F2;
+  border-left: 3px solid #DC2626;
+  padding: 4px 8px;
+  border-radius: 0 4px 4px 0;
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+.field-error.active {
+  display: block;
+}
+
+.field-error::before {
+  content: "⚠️ ";
+  margin-right: 2px;
+}
+
+/* Checkbox Terms Group */
+.checkbox-group {
+  margin-top: 4px;
+  margin-bottom: 24px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: #334155;
+  cursor: pointer;
+  line-height: 1.5;
+}
+
+.form-checkbox {
+  margin-top: 3px;
+  width: 18px;
+  height: 18px;
+  accent-color: #1E3A8A;
+  cursor: pointer;
+}
+
+.form-checkbox:focus-visible {
+  outline: 2px solid #2563EB;
+  outline-offset: 2px;
+}
+
+/* Form Actions Button Bar */
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid #E2E8F0;
+}
+
+.btn-primary {
+  background-color: #1E3A8A;
+  color: #FFFFFF;
+  font-size: 0.98rem;
+  font-weight: 700;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  flex: 1;
+}
+
+.btn-primary:hover {
+  background-color: #1E40AF;
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.btn-secondary {
+  background-color: #F1F5F9;
+  color: #475569;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 12px 20px;
+  border: 1px solid #CBD5E1;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #E2E8F0;
+  color: #0F172A;
+}
+
+/* 7. Success Feedback Card */
+.success-card {
+  display: none;
+  background-color: #FFFFFF;
+  border: 2px solid #86EFAC;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 4px 16px rgba(22, 163, 74, 0.08);
+  margin-bottom: 40px;
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.success-card.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.success-banner-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.success-icon {
+  font-size: 2.2rem;
+  background-color: #DCFCE7;
+  color: #15803D;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.success-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #166534;
+}
+
+.success-message {
+  color: #334155;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.summary-card {
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 18px 20px;
+  margin-bottom: 24px;
+}
+
+.summary-card h4 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #1E3A8A;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #E2E8F0;
+  padding-bottom: 6px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 0.9rem;
+  border-bottom: 1px dashed #E2E8F0;
+}
+
+.summary-row:last-child {
+  border-bottom: none;
+}
+
+.summary-label {
+  color: #64748B;
+  font-weight: 600;
+}
+
+.summary-value {
+  color: #0F172A;
+  font-weight: 700;
+  text-align: right;
+}
+
+.notice-box {
+  background-color: #EFF6FF;
+  border-left: 4px solid #2563EB;
+  padding: 12px 16px;
+  border-radius: 0 6px 6px 0;
+  font-size: 0.85rem;
+  color: #1E40AF;
+  margin-bottom: 20px;
+}
+
+/* 8. Screen Reader Live Region */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 9. Site Footer */
+.site-footer {
+  background-color: #0F172A;
+  color: #94A3B8;
+  padding: 28px 0;
+  border-top: 3px solid #1E3A8A;
+  font-size: 0.88rem;
+  margin-top: auto;
+}
+
+.footer-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* 10. Media Queries (Mobile & Tablet Responsiveness) */
+@media (max-width: 768px) {
+  .form-card {
+    padding: 24px 20px;
+  }
+
+  .form-grid-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
+
+  .summary-row {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .summary-value {
+    text-align: left;
+  }
+
+  .footer-flex {
+    flex-direction: column;
+    text-align: center;
+  }
+}

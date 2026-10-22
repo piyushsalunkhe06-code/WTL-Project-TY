@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KBTCOE Connect — Responsive Multi-Device Dashboard</title>
+
+  <!-- External Responsive Stylesheet -->
+  <link rel="stylesheet" href="responsive.css">
+</head>
+<body>
+
+  <!-- ======================================================================
+       1. Top Header with Flexbox (.header-flex)
+       ====================================================================== -->
+  <header class="site-header">
+    <div class="container header-flex">
+      <div class="brand-wrapper">
+        <img src="kbtcoe-logo.svg" alt="Official KBTCOE Connect Vector Logo" class="brand-logo" width="280" height="60">
+      </div>
+
+      <!-- Hamburger Menu Toggle Button (Visible only on Mobile < 640px) -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        &#9776;
+      </button>
+    </div>
+  </header>
+
+  <!-- ======================================================================
+       2. Navigation Bar with Flexbox (.nav-flex)
+       ====================================================================== -->
+  <nav class="portal-nav" aria-label="Main Navigation">
+    <div class="container nav-flex">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#profile" class="nav-link active">Dashboard</a></li>
+        <li><a href="#feed" class="nav-link">Technical Feed</a></li>
+        <li><a href="#achievements" class="nav-link">Achievements</a></li>
+        <li><a href="#opportunities" class="nav-link">Opportunities</a></li>
+        <li><a href="#notices" class="nav-link">Announcements</a></li>
+      </ul>
+      <span class="nav-status">Academic Session 2025&ndash;2026</span>
+    </div>
+  </nav>
+
+  <!-- ======================================================================
+       3. Main Dashboard Section with CSS Grid (.dashboard-grid)
+       Reflows across Desktop (3 Cols), Tablet (2 Cols), and Mobile (1 Col)
+       ====================================================================== -->
+  <main class="container dashboard-section">
+    <div class="dashboard-grid">
+
+      <!-- ==================================================================
+           COLUMN 1 (Left Sidebar on Desktop, Top on Mobile)
+           Student Profile Summary & Quick Stats
+           ================================================================== -->
+      <aside class="grid-col-left" id="profile">
+        
+        <!-- Student Profile Card -->
+        <article class="card">
+          <div class="card-header-flex">
+            <span class="badge badge-success">Verified Student</span>
+            <span class="badge badge-amber">Batch 2026</span>
+          </div>
+
+          <!-- Flexbox Profile Layout: Avatar + Details -->
+          <div class="profile-flex">
+            <div class="avatar-wrapper">
+              <img src="student-avatar.svg" alt="Student Profile Avatar" class="avatar-img" width="68" height="68">
+            </div>
+            <div class="profile-info">
+              <h3>Snehal Deshmukh</h3>
+              <p>PRN: <code>72183944C</code></p>
+              <p>Information Technology (B.E.)</p>
+            </div>
+          </div>
+
+          <p style="font-size: 0.88rem; color: #475569;">
+            Backend developer passionate about scalable REST microservices, database tuning, and cloud computing.
+          </p>
+
+          <!-- Flexbox Stats Counter -->
+          <div class="stats-flex">
+            <div class="stat-item">
+              <strong>14</strong>
+              <span>Articles</span>
+            </div>
+            <div class="stat-item">
+              <strong>38</strong>
+              <span>Network</span>
+            </div>
+            <div class="stat-item">
+              <strong>9.24</strong>
+              <span>CGPA</span>
+            </div>
+          </div>
+
+          <!-- Flexbox Skill Tags -->
+          <div class="tags-flex">
+            <span class="skill-tag">Java 17</span>
+            <span class="skill-tag">Spring Boot</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">React.js</span>
+            <span class="skill-tag">MySQL 8</span>
+            <span class="skill-tag">Docker</span>
+          </div>
+
+          <!-- Flexbox Button Group -->
+          <div class="btn-group-flex">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">GitHub</a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">LinkedIn</a>
+          </div>
+        </article>
+
+        <!-- Quick Links Card -->
+        <div class="card">
+          <h4 style="color: #1E3A8A; margin-bottom: 10px;">Department Quick Links</h4>
+          <ul style="list-style: none; margin: 0; padding: 0; font-size: 0.9rem;">
+            <li style="margin-bottom: 8px;"><a href="#opportunities">&rarr; Campus Placement Bulletin</a></li>
+            <li style="margin-bottom: 8px;"><a href="#feed">&rarr; Published Technical Papers</a></li>
+            <li style="margin-bottom: 8px;"><a href="#achievements">&rarr; Smart India Hackathon Teams</a></li>
+            <li><a href="#notices">&rarr; SPPU Exam Hall Tickets</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- ==================================================================
+           COLUMN 2 (Center Main Content on Desktop & Tablet)
+           Technical Blog Feed, Achievements & Opportunities Bulletin
+           ================================================================== -->
+      <section class="grid-col-center" id="feed">
+
+        <!-- Featured Technical Blog Post Card -->
+        <article class="card">
+          <div class="card-header-flex">
+            <span class="badge badge-primary">Featured Article</span>
+            <time datetime="2026-10-12" style="font-size: 0.82rem; color: #64748B;">12 October 2026</time>
+          </div>
+
+          <h2 class="card-title" style="margin-top: 8px;">Architecting Scalable REST APIs for Campus Portals using Node.js and MySQL</h2>
+          <p style="font-size: 0.85rem; color: #64748B; margin-bottom: 12px;">
+            Authored by <strong>Snehal Deshmukh</strong> &bull; 6 min read
+          </p>
+
+          <p>
+            During peak registration periods, collegiate web platforms experience massive spikes in concurrent traffic. Decoupling the client tier from the REST API gateway and implementing database connection pooling is essential to maintain high uptime.
+          </p>
+
+          <!-- Technical Diagram Figure -->
+          <figure style="margin: 16px 0; text-align: center; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 6px; padding: 12px;">
+            <img src="rest-architecture.svg" alt="Three-tier REST API architecture: React client, Node.js API gateway, and MySQL database" width="600" height="220" style="margin: 0 auto;">
+            <figcaption style="font-size: 0.8rem; color: #64748B; margin-top: 8px; font-style: italic;">
+              Figure 4.1: Layered connection pool architecture in KBTCOE Connect.
+            </figcaption>
+          </figure>
+
+          <div class="tags-flex">
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Express</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">System Design</span>
+          </div>
+
+          <div class="btn-group-flex">
+            <a href="#feed" class="btn btn-primary">Read Complete Article &rarr;</a>
+          </div>
+        </article>
+
+        <!-- Secondary Blog Post Card -->
+        <article class="card">
+          <div class="card-header-flex">
+            <span class="badge badge-success">DevOps &amp; Teamwork</span>
+            <time datetime="2026-09-28" style="font-size: 0.82rem; color: #64748B;">28 September 2026</time>
+          </div>
+
+          <h2 class="card-title" style="margin-top: 8px;">Demystifying Git Branching Strategies for College Hackathon Teams</h2>
+          <p style="font-size: 0.85rem; color: #64748B; margin-bottom: 12px;">
+            Authored by <strong>Rohit Sandip Patil</strong> &bull; 4 min read
+          </p>
+          <p>
+            Avoid merge conflicts during fast-paced hackathons by enforcing a three-tier branch structure (<code>main</code>, <code>dev</code>, and <code>feature/*</code>).
+          </p>
+          <div class="tags-flex">
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">DevOps</span>
+            <span class="skill-tag">Hackathons</span>
+          </div>
+        </article>
+
+        <!-- Achievements & Competitions Card -->
+        <article class="card" id="achievements">
+          <div class="card-header-flex">
+            <span class="badge badge-amber">Campus Honors</span>
+            <time datetime="2025-12-18" style="font-size: 0.82rem; color: #64748B;">18 December 2025</time>
+          </div>
+          <h2 class="card-title" style="margin-top: 8px;">National Milestone: Smart India Hackathon (SIH) 2025 Regional Finalist</h2>
+          <p>
+            Team ByteCraft KBTCOE engineered an automated rooftop solar panel fault-detection system using drone thermal imagery and edge AI, securing Regional 1st Runner-Up honors with a cash prize of INR 25,000.
+          </p>
+        </article>
+
+        <!-- Opportunities Bulletin Table Card with Responsive Overflow Wrapper -->
+        <section class="card" id="opportunities">
+          <div class="card-header-flex">
+            <span class="badge badge-primary">Placement Portal</span>
+            <span style="font-size: 0.8rem; color: #15803D; font-weight: 600;">Active Opportunities</span>
+          </div>
+
+          <h2 class="card-title" style="margin-top: 8px;">Job &amp; Internship Opportunities Bulletin</h2>
+          <p style="font-size: 0.85rem; color: #64748B;">
+            <em>Demonstration records curated for KBTCOE students. Scroll horizontally on mobile screens.</em>
+          </p>
+
+          <!-- Responsive Table Container to prevent mobile horizontal overflow -->
+          <div class="table-responsive">
+            <table class="opportunity-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Position</th>
+                  <th>Organization</th>
+                  <th>Eligible Branches</th>
+                  <th>Location</th>
+                  <th>Deadline</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>JOB-401</strong></td>
+                  <td>Graduate Trainee Engineer</td>
+                  <td>Emerson Innovation Center</td>
+                  <td>Computer, IT, Instrumentation</td>
+                  <td>Nashik MIDC</td>
+                  <td><time datetime="2026-11-25">25 Nov 2026</time></td>
+                  <td><a href="https://emerson.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Apply</a></td>
+                </tr>
+                <tr>
+                  <td><strong>INT-402</strong></td>
+                  <td>Cloud Infrastructure Intern</td>
+                  <td>Infosys Springboard Program</td>
+                  <td>All Disciplines (TE, BE)</td>
+                  <td>Virtual / Hybrid</td>
+                  <td><time datetime="2026-12-01">01 Dec 2026</time></td>
+                  <td><a href="https://infyspringboard.onwingspan.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="padding: 4px 10px; font-size: 0.8rem;">Register</a></td>
+                </tr>
+                <tr>
+                  <td><strong>CMP-403</strong></td>
+                  <td>TCS CodeVita Season 14</td>
+                  <td>Tata Consultancy Services</td>
+                  <td>All Engineering Branches</td>
+                  <td>Online Contest</td>
+                  <td><time datetime="2026-12-15">15 Dec 2026</time></td>
+                  <td><a href="https://tcscodevita.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding: 4px 10px; font-size: 0.8rem;">Enroll</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </section>
+
+      <!-- ==================================================================
+           COLUMN 3 (Right Sidebar on Desktop, Bottom on Mobile/Tablet)
+           Campus Announcements & Trending Hashtags
+           ================================================================== -->
+      <aside class="grid-col-right" id="notices">
+
+        <!-- Campus Notice Card -->
+        <div class="card" style="border-left: 4px solid #F59E0B;">
+          <h3 style="color: #92400E; font-size: 1.1rem; margin-bottom: 8px;">Campus Examination Circular</h3>
+          <p style="font-size: 0.88rem; color: #475569;">
+            SPPU Semester VII In-Sem examinations commence on <time datetime="2026-11-02"><strong>02 November 2026</strong></time>. Hall tickets are downloadable via student login.
+          </p>
+        </div>
+
+        <!-- Attendance Requirement Notice -->
+        <div class="card" style="border-left: 4px solid #DC2626;">
+          <h3 style="color: #991B1B; font-size: 1.1rem; margin-bottom: 8px;">T&amp;P NOC Attendance Rule</h3>
+          <p style="font-size: 0.88rem; color: #475569;">
+            Students must maintain at least <strong>75% classroom attendance</strong> across all subjects to be eligible for Training and Placement campus drives.
+          </p>
+        </div>
+
+        <!-- Trending Topics Card -->
+        <div class="card">
+          <h4 style="color: #1E3A8A; margin-bottom: 10px;">Trending Campus Topics</h4>
+          <div class="tags-flex">
+            <span class="skill-tag">#SmartIndiaHackathon</span>
+            <span class="skill-tag">#ReactJS</span>
+            <span class="skill-tag">#NodeJS</span>
+            <span class="skill-tag">#CampusPlacements2026</span>
+            <span class="skill-tag">#SPPUExams</span>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- ======================================================================
+       4. Responsive Footer with Flexbox (.footer-flex)
+       ====================================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-flex">
+      <div>
+        <p><strong>KBTCOE Connect</strong> &mdash; The Professional Network for KBTCOE Students</p>
+        <p><small>MVP Samaj's K.B.T. College of Engineering, Gangapur Road, Nashik &mdash; 422013</small></p>
+      </div>
+      <div>
+        <p><small>&copy; <time datetime="2026">2026</time> KBTCOE Connect. All demonstration records synthetic.</small></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================================
+       5. Lightweight Vanilla JavaScript for Mobile Navigation Toggle
+       Enables toggle functionality for screen widths below 640px.
+       ====================================================================== -->
+  <script>
+    (function() {
+      const menuToggle = document.getElementById('menuToggle');
+      const navLinks = document.getElementById('navLinks');
+
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+          const isCurrentlyOpen = navLinks.classList.toggle('open');
+          menuToggle.setAttribute('aria-expanded', isCurrentlyOpen ? 'true' : 'false');
+        });
+
+        // Close menu automatically when clicking any nav link on mobile
+        navLinks.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            if (window.innerWidth < 640) {
+              navLinks.classList.remove('open');
+              menuToggle.setAttribute('aria-expanded', 'false');
+            }
+          });
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KBTCOE Connect — Semantic Campus Portal</title>
+</head>
+<body>
+
+  <!-- Top Page Header -->
+  <header>
+    <div>
+      <img src="kbtcoe-logo.svg" alt="Official crest and banner of MVP Samaj's KBTCOE Connect" width="480" height="100">
+      <p>
+        <strong>MVP Samaj's Karmaveer Adv. Baburao Ganpatrao Thakare College of Engineering</strong><br>
+        <em>Affiliated to Savitribai Phule Pune University (SPPU) | Approved by AICTE, New Delhi</em>
+      </p>
+    </div>
+    <hr>
+
+    <!-- Semantic Primary Navigation -->
+    <nav aria-label="Main Portal Navigation">
+      <ul>
+        <li><a href="#student-profile">Student Profile</a></li>
+        <li><a href="#technical-blogs">Technical Blog Articles</a></li>
+        <li><a href="#achievements-competitions">Achievements &amp; Hackathons</a></li>
+        <li><a href="#opportunities-bulletin">Opportunities Bulletin</a></li>
+        <li><a href="#campus-announcements">Campus Notices</a></li>
+      </ul>
+      <hr>
+    </nav>
+  </header>
+
+  <!-- Main Content Region -->
+  <main>
+
+    <!-- Section 1: Student Profile Showcase -->
+    <section id="student-profile">
+      <header>
+        <h1>Student Profile Spotlight</h1>
+        <p>Verified academic and professional credentials from the Department of Information Technology.</p>
+      </header>
+
+      <article>
+        <header>
+          <h2>Snehal Rajesh Deshmukh</h2>
+          <p>
+            <strong>PRN:</strong> <code>72183944C</code> | 
+            <strong>Branch:</strong> Information Technology (Final Year B.E.) | 
+            <strong>Anticipated Graduation:</strong> <time datetime="2026-06">June 2026</time>
+          </p>
+        </header>
+
+        <section>
+          <h3>Professional Summary</h3>
+          <p>
+            Final-year undergraduate student specializing in enterprise backend architecture, database optimization, and cloud services. Technical lead of the KBTCOE ACM Student Chapter, mentor for junior coding bootcamps, and passionate open-source contributor.
+          </p>
+        </section>
+
+        <section>
+          <h3>Core Competencies &amp; Technical Skills</h3>
+          <ul>
+            <li><strong>Programming Languages:</strong> Java (Core &amp; Advanced), JavaScript (ES6+), Python, SQL</li>
+            <li><strong>Frameworks &amp; Web Technologies:</strong> Spring Boot, Node.js, Express.js, React.js, HTML5, CSS3</li>
+            <li><strong>Databases:</strong> MySQL 8, PostgreSQL, Redis (Caching)</li>
+            <li><strong>Engineering Practices:</strong> RESTful API Design, Git Version Control, Microservices, CI/CD Pipelines</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Academic &amp; Portfolio Links</h3>
+          <ul>
+            <li><a href="https://github.com" target="_blank" rel="noopener noreferrer">Visit Snehal's GitHub Profile to inspect open source repositories</a></li>
+            <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">Connect with Snehal on LinkedIn for professional correspondence</a></li>
+            <li><a href="mailto:snehal.deshmukh@kbtcoe.org">Send academic email to snehal.deshmukh@kbtcoe.org</a></li>
+          </ul>
+        </section>
+
+        <footer>
+          <p>
+            <small>Profile status: <strong>Verified Student Member</strong> | Last updated on <time datetime="2026-10-10">10 October 2026</time></small>
+          </p>
+        </footer>
+      </article>
+      <hr>
+    </section>
+
+    <!-- Section 2: Technical Blog Articles -->
+    <section id="technical-blogs">
+      <header>
+        <h1>Technical Blog Articles</h1>
+        <p>Peer-reviewed articles, engineering insights, and development guides authored by KBTCOE students.</p>
+      </header>
+
+      <!-- Blog Article 1 -->
+      <article>
+        <header>
+          <h2>Architecting Scalable REST APIs for Campus Portals using Node.js and MySQL</h2>
+          <p>
+            Published by <strong>Snehal Deshmukh</strong> on 
+            <time datetime="2026-10-12">12 October 2026</time> &bull; 
+            <em>Reading Time: 6 minutes</em>
+          </p>
+        </header>
+
+        <section>
+          <h3>Introduction and Architectural Problem Statement</h3>
+          <p>
+            Modern campus portals manage fluctuating traffic surges during semester registration and placement season. Traditional monolithic architectures often fail under sudden concurrent loads due to database connection exhaustion and blocking I/O operations. In this technical writeup, we analyze how a decoupled 3-tier architecture with connection pooling resolves these bottlenecks.
+          </p>
+
+          <figure>
+            <img src="rest-architecture.svg" alt="Three-tier REST API architecture showing Client Tier with React SPA, REST API Tier with Node.js Express, and Database Tier with MySQL" width="600" height="220">
+            <figcaption>Figure 2.1: Data flow and connection pool architecture in KBTCOE Connect.</figcaption>
+          </figure>
+
+          <h3>Key Architectural Principles</h3>
+          <ol>
+            <li>
+              <strong>Connection Pooling:</strong> Utilizing <code>mysql2/promise</code> connection pools prevents the overhead of creating and tearing down TCP handshakes on every incoming HTTP request.
+            </li>
+            <li>
+              <strong>Parameterized Queries:</strong> Protecting campus databases from SQL injection vulnerabilities by enforcing prepared statements across all student CRUD operations.
+            </li>
+            <li>
+              <strong>Stateless Authentication:</strong> Employing JSON Web Tokens (JWT) to verify student identities across distributed endpoints without server-side memory session bloat.
+            </li>
+          </ol>
+        </section>
+
+        <footer>
+          <p>
+            <strong>Categorized under:</strong> System Architecture, Node.js, Express, MySQL, Security<br>
+            <a href="#student-profile">Read more publications by this author</a>
+          </p>
+        </footer>
+      </article>
+
+      <hr>
+
+      <!-- Blog Article 2 -->
+      <article>
+        <header>
+          <h2>Demystifying Git Branching Strategies for College Hackathon Teams</h2>
+          <p>
+            Published by <strong>Rohit Sandip Patil</strong> on 
+            <time datetime="2026-09-28">28 September 2026</time> &bull; 
+            <em>Reading Time: 4 minutes</em>
+          </p>
+        </header>
+
+        <section>
+          <h3>The Chaos of Rapid Hackathon Collaboration</h3>
+          <p>
+            During 36-hour hackathons like Smart India Hackathon, teams frequently stumble into merge conflicts, overwritten code, and broken master branches. Adopting a structured, lightweight Git strategy transforms team productivity.
+          </p>
+          <p>
+            We recommend a three-branch workflow:
+          </p>
+          <ul>
+            <li><strong><code>main</code>:</strong> Production-ready code; demo deployable at any moment.</li>
+            <li><strong><code>dev</code>:</strong> Integration branch where team members merge verified features.</li>
+            <li><strong><code>feature/*</code>:</strong> Isolated branches for individual sub-modules (e.g., <code>feature/login-ui</code>, <code>feature/api-routes</code>).</li>
+          </ul>
+        </section>
+
+        <footer>
+          <p>
+            <strong>Categorized under:</strong> Git, DevOps, Teamwork, Hackathons<br>
+            <a href="mailto:rohit.patil@kbtcoe.org">Discuss this article with the author</a>
+          </p>
+        </footer>
+      </article>
+      <hr>
+    </section>
+
+    <!-- Section 3: Achievements & Competitions -->
+    <section id="achievements-competitions">
+      <header>
+        <h1>Student Achievements &amp; Campus Competitions</h1>
+        <p>Documenting institutional accolades, national hackathon milestones, and upcoming technical events.</p>
+      </header>
+
+      <!-- Achievement Article -->
+      <article>
+        <header>
+          <h2>National Milestone: Smart India Hackathon (SIH) 2025 Regional Finalist</h2>
+          <p>
+            Conferred on: <time datetime="2025-12-18">18 December 2025</time> | 
+            Issued by: <strong>Ministry of Education's Innovation Cell, Govt. of India</strong>
+          </p>
+        </header>
+        <p>
+          A multidisciplinary squad representing KBTCOE (comprising Computer, IT, and Mechanical students) developed an automated rooftop solar panel fault-detection system using drone thermal imagery and edge computing algorithms.
+        </p>
+        <ul>
+          <li><strong>Team Name:</strong> Team ByteCraft KBTCOE</li>
+          <li><strong>Problem Statement ID:</strong> SIH1422 (Renewable Energy)</li>
+          <li><strong>Key Result:</strong> Recognized as Regional Runner-Up with a cash citation of INR 25,000.</li>
+        </ul>
+      </article>
+
+      <!-- Competition Announcement Article -->
+      <article>
+        <header>
+          <h2>Upcoming Event: KBTCOE CodeSprint 2026 &mdash; Annual Algorithmic Challenge</h2>
+          <p>
+            Event Date: <time datetime="2026-11-10">10 November 2026</time> | 
+            Organized by: <strong>Computer Engineering Students' Association (CESA)</strong>
+          </p>
+        </header>
+        <p>
+          CodeSprint 2026 is an individual 3-hour competitive programming contest designed to prepare second, third, and final year students for technical recruitment rounds of Tier-1 product companies.
+        </p>
+        <ul>
+          <li><strong>Eligibility:</strong> Open to all enrolled undergraduate engineering students of KBTCOE.</li>
+          <li><strong>Topics:</strong> Data Structures, Dynamic Programming, Graph Theory, and Combinatorics.</li>
+          <li><strong>Registration Deadline:</strong> <time datetime="2026-11-05">05 November 2026</time></li>
+        </ul>
+        <p>
+          <a href="mailto:cesa@kbtcoe.org?subject=CodeSprint%202026%20Registration%20Inquiry">Contact CESA Student Coordinators to Register</a>
+        </p>
+      </article>
+      <hr>
+    </section>
+
+    <!-- Section 4: Opportunities Bulletin -->
+    <section id="opportunities-bulletin">
+      <header>
+        <h1>Job &amp; Internship Opportunities Bulletin</h1>
+        <p>
+          <em>Notice: Sample demonstration records curated for the KBTCOE Connect campus platform.</em>
+        </p>
+      </header>
+
+      <table border="1" cellpadding="8" cellspacing="0" width="100%">
+        <caption><strong>Table 2.1: Semantic Catalog of Verified Campus Opportunities</strong></caption>
+        <thead>
+          <tr bgcolor="#E2E8F0">
+            <th scope="col">Listing ID</th>
+            <th scope="col">Position / Title</th>
+            <th scope="col">Organization</th>
+            <th scope="col">Eligible Branches</th>
+            <th scope="col">Location</th>
+            <th scope="col">Deadline</th>
+            <th scope="col">Application Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td align="center"><strong>JOB-201</strong></td>
+            <td>Graduate Trainee Engineer &mdash; Software</td>
+            <td>Emerson Innovation Center</td>
+            <td>Computer, IT, Instrumentation</td>
+            <td>Nashik MIDC</td>
+            <td><time datetime="2026-11-25">25 November 2026</time></td>
+            <td><a href="https://www.emerson.com" target="_blank" rel="noopener noreferrer">Apply on Emerson Careers Portal</a></td>
+          </tr>
+          <tr>
+            <td align="center"><strong>INT-202</strong></td>
+            <td>Cloud Infrastructure Intern</td>
+            <td>Infosys Springboard Campus Program</td>
+            <td>All Disciplines (TE, BE)</td>
+            <td>Virtual / Hybrid</td>
+            <td><time datetime="2026-12-01">01 December 2026</time></td>
+            <td><a href="https://infyspringboard.onwingspan.com" target="_blank" rel="noopener noreferrer">Register via Infosys Springboard</a></td>
+          </tr>
+          <tr>
+            <td align="center"><strong>CMP-203</strong></td>
+            <td>TCS CodeVita Season 14 Global Contest</td>
+            <td>Tata Consultancy Services</td>
+            <td>All Engineering Branches</td>
+            <td>Online Contest</td>
+            <td><time datetime="2026-12-15">15 December 2026</time></td>
+            <td><a href="https://tcscodevita.com" target="_blank" rel="noopener noreferrer">Register for TCS CodeVita Season 14</a></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr bgcolor="#E2E8F0">
+            <th colspan="5" align="left">
+              Total Verified Opportunities Listed: 3 Demonstration Records
+            </th>
+            <th colspan="2" align="center">
+              Coordinated by: <strong>KBTCOE T&amp;P Cell</strong>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <hr>
+    </section>
+
+  </main>
+
+  <!-- Semantic Aside for Tangential Information -->
+  <aside id="campus-announcements" aria-label="Campus Notices and Guidelines">
+    <header>
+      <h2>Campus Notices &amp; Student Guidelines</h2>
+      <p>Important administrative updates for the current academic session.</p>
+    </header>
+
+    <section>
+      <h3>University Examination Notices (SPPU)</h3>
+      <p>
+        Savitribai Phule Pune University has published the tentative timetable for the 
+        <strong>Semester VII &amp; V In-Semester Examinations</strong>.
+      </p>
+      <p>
+        Commencement Date: <time datetime="2026-11-02">02 November 2026</time><br>
+        Detailed schedules are posted on the departmental display boards.
+      </p>
+    </section>
+
+    <section>
+      <h3>KBTCOE Connect Community Guidelines</h3>
+      <ol>
+        <li>Articles must be original, technical, and adhere to academic anti-plagiarism standards.</li>
+        <li>Opportunity postings must clearly state eligibility, stipend/salary, and official contact emails.</li>
+        <li>Treat fellow students, faculty, and alumni with professional courtesy.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h3>Trending Campus Tags</h3>
+      <p>
+        <code>#ReactJS</code> &bull; 
+        <code>#NodeJS</code> &bull; 
+        <code>#SmartIndiaHackathon</code> &bull; 
+        <code>#SPPUExams</code> &bull; 
+        <code>#CampusPlacements2026</code>
+      </p>
+    </section>
+  </aside>
+
+  <hr>
+
+  <!-- Semantic Page Footer -->
+  <footer>
+    <section>
+      <p>
+        <strong>KBTCOE Connect &mdash; The Professional Network for KBTCOE Students</strong><br>
+        MVP Samaj's Karmaveer Adv. Baburao Ganpatrao Thakare College of Engineering<br>
+        Udoji Maratha Boarding Campus, Gangapur Road, Nashik &mdash; 422013, Maharashtra, India.
+      </p>
+      <p>
+        <strong>Helpdesk Email:</strong> <a href="mailto:connect.support@kbtcoe.org">connect.support@kbtcoe.org</a> | 
+        <strong>T&amp;P Office:</strong> <a href="mailto:tnp@kbtcoe.org">tnp@kbtcoe.org</a> | 
+        <strong>Phone:</strong> +91 (0253) 2571439
+      </p>
+      <p>
+        <a href="https://kbtcoe.org" target="_blank" rel="noopener noreferrer">Visit Official KBTCOE Institution Portal</a> &bull; 
+        <a href="http://www.unipune.ac.in" target="_blank" rel="noopener noreferrer">Visit Savitribai Phule Pune University (SPPU) Portal</a> &bull; 
+        <a href="#student-profile">Back to Top of Page &uarr;</a>
+      </p>
+    </section>
+    <hr>
+    <p align="center">
+      <small>
+        &copy; <time datetime="2026">2026</time> KBTCOE Connect. Academic Practical Deliverable &mdash; Department of Information Technology &amp; Computer Engineering.<br>
+        All synthetic student profiles and opportunity records are intended for academic demonstration.
+      </small>
+    </p>
+  </footer>
+
+</body>
+</html>

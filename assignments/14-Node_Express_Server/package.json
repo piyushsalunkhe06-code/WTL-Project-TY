@@ -1,0 +1,24 @@
+{
+  "name": "14-node-express-server",
+  "version": "1.0.0",
+  "description": "KBTCOE Connect — Node.js and Express REST API Server (Assignment 14)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node test.js"
+  },
+  "keywords": [
+    "kbtcoe-connect",
+    "express",
+    "nodejs",
+    "rest-api",
+    "crud",
+    "middleware"
+  ],
+  "author": "Department of Information Technology, KBTCOE",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}

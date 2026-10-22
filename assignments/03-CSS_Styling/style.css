@@ -1,0 +1,447 @@
+/* ==========================================================================
+   KBTCOE Connect — Master External Stylesheet (style.css)
+   Assignment 03: CSS Styling
+   Demonstrating Element, Class, and ID Selectors, Box Model, and Pseudo-classes
+   ========================================================================== */
+
+/* 1. Global Reset & Box Sizing */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. Base Typography & Palette Setup */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #0F172A;
+  background-color: #F8FAFC;
+  padding: 0;
+  margin: 0;
+}
+
+/* 3. Element Selectors */
+h1, h2, h3, h4, h5, h6 {
+  color: #1E3A8A;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+
+h1 {
+  font-size: 1.85rem;
+}
+
+h2 {
+  font-size: 1.45rem;
+  border-bottom: 2px solid #E2E8F0;
+  padding-bottom: 0.35rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+  color: #1E40AF;
+  margin-bottom: 0.4rem;
+}
+
+p {
+  margin-bottom: 0.85rem;
+  color: #334155;
+}
+
+a {
+  color: #2563EB;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #1D4ED8;
+  text-decoration: underline;
+}
+
+ul, ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+  color: #334155;
+}
+
+li {
+  margin-bottom: 0.35rem;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+th, td {
+  text-align: left;
+  vertical-align: top;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #E2E8F0;
+  margin: 1.5rem 0;
+}
+
+/* 4. Layout Container */
+.container {
+  width: 92%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+/* 5. ID Selectors */
+#main-header {
+  background-color: #FFFFFF;
+  border-bottom: 2px solid #E2E8F0;
+  padding: 16px 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.header-logo {
+  max-width: 360px;
+  height: auto;
+}
+
+.header-info {
+  text-align: right;
+  padding-left: 16px;
+}
+
+#portal-nav {
+  background-color: #1E3A8A;
+  padding: 10px 0;
+}
+
+#student-profile-section {
+  margin-top: 24px;
+}
+
+#featured-blog {
+  border-left: 5px solid #2563EB;
+}
+
+#opportunities-section {
+  margin-top: 32px;
+}
+
+/* 6. Navigation Bar Classes & Pseudo-classes */
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  display: inline-block;
+  margin-right: 18px;
+}
+
+.nav-link {
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 6px 10px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.nav-link:hover {
+  background-color: #2563EB;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.nav-link:active {
+  background-color: #1D4ED8;
+}
+
+/* 7. Card Components (Demonstrating the CSS Box Model) */
+.card {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.09);
+  transform: translateY(-2px);
+}
+
+.card-header {
+  border-bottom: 1px solid #E2E8F0;
+  padding-bottom: 12px;
+  margin-bottom: 14px;
+}
+
+.card-title {
+  font-size: 1.3rem;
+  color: #1E3A8A;
+  margin-bottom: 4px;
+}
+
+.card-subtitle {
+  font-size: 0.9rem;
+  color: #64748B;
+}
+
+.card-body {
+  margin-bottom: 14px;
+}
+
+.card-footer {
+  border-top: 1px solid #F1F5F9;
+  padding-top: 12px;
+  margin-top: 14px;
+  font-size: 0.85rem;
+  color: #64748B;
+}
+
+/* 8. Badge & Pill Selectors */
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.badge-primary {
+  background-color: #1E3A8A;
+  color: #FFFFFF;
+}
+
+.badge-success {
+  background-color: #DCFCE7;
+  color: #15803D;
+  border: 1px solid #BBF7D0;
+}
+
+.badge-info {
+  background-color: #E0F2FE;
+  color: #0369A1;
+  border: 1px solid #BAE6FD;
+}
+
+.badge-warning {
+  background-color: #FEF3C7;
+  color: #B45309;
+  border: 1px solid #FDE68A;
+}
+
+/* 9. Skill Tags Component */
+.skill-list {
+  list-style: none;
+  margin: 8px 0 14px 0;
+  padding: 0;
+}
+
+.skill-tag {
+  display: inline-block;
+  background-color: #EFF6FF;
+  color: #1E40AF;
+  border: 1px solid #BFDBFE;
+  padding: 4px 10px;
+  border-radius: 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin: 3px 4px 3px 0;
+}
+
+.skill-tag:hover {
+  background-color: #DBEAFE;
+  color: #1E3A8A;
+}
+
+/* 10. Button Selectors & Interactive States */
+.btn {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: #1E3A8A;
+  color: #FFFFFF;
+  border-color: #1E3A8A;
+}
+
+.btn-primary:hover {
+  background-color: #1E40AF;
+  color: #FFFFFF;
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(30, 58, 138, 0.25);
+}
+
+.btn-primary:active {
+  background-color: #172554;
+}
+
+.btn-secondary {
+  background-color: #2563EB;
+  color: #FFFFFF;
+  border-color: #2563EB;
+}
+
+.btn-secondary:hover {
+  background-color: #1D4ED8;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: #1E3A8A;
+  border-color: #1E3A8A;
+}
+
+.btn-outline:hover {
+  background-color: #EFF6FF;
+  text-decoration: none;
+}
+
+/* 11. Table Styling & Striping (Box Model & Pseudo-classes) */
+.opportunity-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  background-color: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.opportunity-table caption {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #1E3A8A;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.opportunity-table th,
+.opportunity-table td {
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid #E2E8F0;
+  font-size: 0.9rem;
+}
+
+.opportunity-table th {
+  background-color: #1E3A8A;
+  color: #FFFFFF;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  letter-spacing: 0.5px;
+}
+
+/* Pseudo-class: Alternating row colors */
+.opportunity-table tbody tr:nth-child(even) {
+  background-color: #F8FAFC;
+}
+
+/* Pseudo-class: Table Row hover highlight */
+.opportunity-table tbody tr:hover {
+  background-color: #F1F5F9;
+}
+
+.opportunity-table tfoot th {
+  background-color: #E2E8F0;
+  color: #334155;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* 12. Figure and Technical Diagram Styling */
+figure.tech-figure {
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 6px;
+  padding: 12px;
+  margin: 16px 0;
+  text-align: center;
+}
+
+figure.tech-figure img {
+  margin: 0 auto;
+  border-radius: 4px;
+}
+
+figcaption.tech-caption {
+  font-size: 0.85rem;
+  color: #64748B;
+  font-style: italic;
+  margin-top: 8px;
+}
+
+/* 13. Sidebar Notice Card */
+.sidebar-notice {
+  background-color: #FFFFFF;
+  border-left: 4px solid #F59E0B;
+  border-radius: 4px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* 14. Institutional Site Footer */
+.site-footer {
+  background-color: #0F172A;
+  color: #94A3B8;
+  padding: 32px 0 20px 0;
+  margin-top: 48px;
+  font-size: 0.88rem;
+  border-top: 3px solid #1E3A8A;
+}
+
+.site-footer h4 {
+  color: #FFFFFF;
+  margin-bottom: 8px;
+}
+
+.site-footer p {
+  color: #94A3B8;
+  margin-bottom: 6px;
+}
+
+.site-footer a {
+  color: #60A5FA;
+}
+
+.site-footer a:hover {
+  color: #93C5FD;
+}
+
+.site-footer hr {
+  background: #1E293B;
+  margin: 16px 0;
+}

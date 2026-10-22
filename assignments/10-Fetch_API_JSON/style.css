@@ -1,0 +1,578 @@
+/* ==========================================================================
+   KBTCOE Connect — Opportunity Explorer Stylesheet (style.css)
+   Assignment 10: Fetch API & JSON
+   Palette: Navy #1E3A8A, Blue #2563EB, Surface #F8FAFC, Border #E2E8F0
+   Type Badges: Internship (Green), Hackathon (Amber), Competition (Purple), Workshop (Cyan)
+   ========================================================================== */
+
+/* 1. Global Reset & Box Model */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #0F172A;
+  background-color: #F8FAFC;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 92%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 2. Global Site Header */
+.site-header {
+  background-color: #FFFFFF;
+  border-bottom: 2px solid #E2E8F0;
+  padding: 16px 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.brand-logo {
+  max-width: 250px;
+  height: auto;
+  display: block;
+}
+
+.lab-badge {
+  background-color: #EFF6FF;
+  color: #1E3A8A;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid #BFDBFE;
+}
+
+/* 3. Page Hero Section */
+.page-hero {
+  padding: 28px 0 18px 0;
+}
+
+.page-title {
+  font-size: 1.95rem;
+  color: #1E3A8A;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.page-subtitle {
+  color: #475569;
+  font-size: 1rem;
+  max-width: 820px;
+  margin-bottom: 12px;
+}
+
+.demo-badge {
+  display: inline-block;
+  background-color: #FEF3C7;
+  color: #92400E;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 16px;
+  border: 1px solid #FDE68A;
+}
+
+/* 4. Local Execution Protocol Notice (file:// CORS Warning) */
+.cors-notice-card {
+  background-color: #FFFBEB;
+  border: 1.5px solid #FCD34D;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  font-size: 0.88rem;
+  color: #78350F;
+  line-height: 1.5;
+}
+
+.cors-notice-card strong {
+  color: #92400E;
+}
+
+.cors-notice-card code {
+  background-color: #FEF3C7;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.86rem;
+  color: #B45309;
+}
+
+/* 5. Controls & Filter Card */
+.controls-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 22px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.controls-flex {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.form-group-search {
+  flex: 1;
+  min-width: 240px;
+}
+
+.form-group-type {
+  flex: 0 0 220px;
+}
+
+.form-group-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 0.92rem;
+  font-family: inherit;
+  color: #0F172A;
+  background-color: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 6px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  height: 42px;
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: #2563EB;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.btn-ctrl {
+  height: 42px;
+  padding: 0 16px;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.btn-ctrl:focus-visible {
+  outline: 2px solid #2563EB;
+  outline-offset: 2px;
+}
+
+.btn-refresh {
+  background-color: #1E3A8A;
+  color: #FFFFFF;
+  border: 1px solid #1E3A8A;
+}
+
+.btn-refresh:hover:not(:disabled) {
+  background-color: #1E40AF;
+}
+
+.btn-refresh:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-reset {
+  background-color: #F1F5F9;
+  color: #475569;
+  border: 1px solid #CBD5E1;
+}
+
+.btn-reset:hover {
+  background-color: #E2E8F0;
+  color: #0F172A;
+}
+
+.btn-simulate-error {
+  background-color: #FEF2F2;
+  color: #991B1B;
+  border: 1px solid #FECDD3;
+}
+
+.btn-simulate-error:hover {
+  background-color: #FEE2E2;
+}
+
+/* 6. Results Summary Bar */
+.results-summary-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  color: #64748B;
+}
+
+.results-count {
+  font-weight: 800;
+  color: #1E3A8A;
+}
+
+/* 7. Opportunities Grid */
+.opportunities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 22px;
+  margin-bottom: 48px;
+}
+
+/* Opportunity Card */
+.opportunity-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  animation: cardFade 0.25s ease-out forwards;
+}
+
+@keyframes cardFade {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.opportunity-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+  border-color: #BFDBFE;
+}
+
+.card-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 8px;
+}
+
+.type-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+
+.badge-internship { background-color: #DCFCE7; color: #166534; border: 1px solid #BBF7D0; }
+.badge-hackathon { background-color: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; }
+.badge-competition { background-color: #FAF5FF; color: #6B21A8; border: 1px solid #E9D5FF; }
+.badge-workshop { background-color: #ECFEFF; color: #155E75; border: 1px solid #A5F3FC; }
+
+.opp-location {
+  font-size: 0.78rem;
+  color: #64748B;
+  white-space: nowrap;
+}
+
+.opp-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #1E3A8A;
+  line-height: 1.35;
+  margin-bottom: 4px;
+}
+
+.opp-organization {
+  font-size: 0.85rem;
+  color: #475569;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.opp-description {
+  font-size: 0.88rem;
+  color: #334155;
+  line-height: 1.55;
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+.opp-details-box {
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 0.82rem;
+  gap: 8px;
+}
+
+.detail-label {
+  color: #64748B;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.detail-value {
+  color: #0F172A;
+  font-weight: 600;
+  text-align: right;
+}
+
+.reward-highlight {
+  color: #059669;
+  font-weight: 700;
+}
+
+.deadline-highlight {
+  color: #B91C1C;
+  font-weight: 700;
+}
+
+.opp-tags-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.tag-pill {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #1E40AF;
+  background-color: #EFF6FF;
+  border: 1px solid #DBEAFE;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.card-footer-row {
+  border-top: 1px solid #F1F5F9;
+  padding-top: 14px;
+}
+
+.btn-apply-demo {
+  width: 100%;
+  background-color: #EFF6FF;
+  color: #1E3A8A;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 10px 14px;
+  border: 1.5px solid #BFDBFE;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-apply-demo:hover {
+  background-color: #1E3A8A;
+  color: #FFFFFF;
+  border-color: #1E3A8A;
+}
+
+/* 8. Full-Width State Cards (Loading, Error, Empty) */
+.state-card {
+  grid-column: 1 / -1;
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  padding: 48px 24px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.state-loading {
+  border: 1px solid #E2E8F0;
+}
+
+.loading-spinner {
+  width: 44px;
+  height: 44px;
+  border: 4px solid #E2E8F0;
+  border-top-color: #2563EB;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 16px auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.state-error {
+  border: 2px solid #FECDD3;
+  background-color: #FFF1F2;
+}
+
+.error-title {
+  color: #9F1239;
+}
+
+.state-icon {
+  font-size: 2.8rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.state-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #1E3A8A;
+  margin-bottom: 6px;
+}
+
+.state-desc {
+  color: #64748B;
+  font-size: 0.92rem;
+  max-width: 520px;
+  margin: 0 auto 18px auto;
+}
+
+.state-empty {
+  border: 2px dashed #CBD5E1;
+}
+
+.btn-retry {
+  background-color: #BE123C;
+  color: #FFFFFF;
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-retry:hover {
+  background-color: #9F1239;
+}
+
+.btn-reset-filters {
+  background-color: #1E3A8A;
+  color: #FFFFFF;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 9px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-reset-filters:hover {
+  background-color: #1E40AF;
+}
+
+/* 9. Site Footer */
+.site-footer {
+  background-color: #0F172A;
+  color: #94A3B8;
+  padding: 28px 0;
+  border-top: 3px solid #1E3A8A;
+  font-size: 0.88rem;
+  margin-top: auto;
+}
+
+.footer-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tech-badge {
+  background-color: #1E293B;
+  color: #38BDF8;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 12px;
+  border: 1px solid #334155;
+}
+
+/* 10. Responsive Media Queries */
+@media (max-width: 900px) {
+  .controls-flex {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-group-search,
+  .form-group-type,
+  .form-group-actions {
+    width: 100%;
+    flex: none;
+  }
+
+  .form-group-actions {
+    justify-content: flex-start;
+  }
+
+  .btn-ctrl {
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 639px) {
+  .opportunities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group-actions {
+    flex-direction: column;
+  }
+
+  .footer-flex {
+    flex-direction: column;
+    text-align: center;
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "kbtcoe-connect-server",
+  "version": "1.0.0",
+  "description": "KBTCOE Connect — Final Capstone Backend REST API (Assignment 16)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node ../tests/backend.test.js"
+  },
+  "keywords": [
+    "kbtcoe-connect",
+    "express",
+    "mysql2",
+    "jwt",
+    "full-stack",
+    "rest-api"
+  ],
+  "author": "Department of Computer Engineering, MVP's KBTCOE Nashik",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.11.3"
+  }
+}

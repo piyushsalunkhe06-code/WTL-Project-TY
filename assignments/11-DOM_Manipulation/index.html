@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KBTCOE Connect — Assignment 11: JavaScript DOM Manipulation featuring Live Like Counter and Dynamic Comment Thread.">
+  <title>Live Post &amp; Comment Thread — KBTCOE Connect | Assignment 11</title>
+  
+  <!-- External CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Deferred Vanilla JavaScript Engine -->
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+  <!-- Accessible Skip Navigation Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Top Global Header -->
+  <header class="site-header">
+    <div class="container header-flex">
+      <div class="brand-container">
+        <a href="#top" class="brand-link" aria-label="KBTCOE Connect Home">
+          <img src="assets/kbtcoe-logo.svg" alt="KBTCOE Connect Logo" class="brand-logo" width="230" height="40">
+        </a>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="site-nav" aria-label="Portal Navigation">
+        <ul class="nav-list">
+          <li><a href="#post" class="nav-link active" aria-current="page">Post View</a></li>
+          <li><a href="#students" class="nav-link">Students</a></li>
+          <li><a href="#blogs" class="nav-link">Blogs</a></li>
+          <li><a href="#opportunities" class="nav-link">Opportunities</a></li>
+        </ul>
+      </nav>
+
+      <!-- Fictional Current User Profile Pill -->
+      <div class="user-profile-badge" aria-label="Logged-in User Profile">
+        <div class="user-avatar" aria-hidden="true">TS</div>
+        <div class="user-meta">
+          <span class="user-name">Tanmay Shinde</span>
+          <span class="user-role">BE Computer • You</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Live Status Region for Screen Readers & Visual Feedback -->
+  <aside 
+    id="actionStatus" 
+    class="action-status-banner visually-hidden" 
+    role="status" 
+    aria-live="polite" 
+    aria-atomic="true"
+  ></aside>
+
+  <!-- Main Content Container -->
+  <main id="main-content" class="container main-layout">
+    
+    <!-- Hero / Assignment Intro Banner -->
+    <section class="assignment-banner" aria-label="Assignment Information">
+      <div class="banner-content">
+        <span class="badge-lab">Assignment 11 • DOM Manipulation</span>
+        <h1 class="page-title">Interactive Student Post &amp; Dynamic Comment Engine</h1>
+        <p class="page-subtitle">
+          Demonstrating live state synchronization, event delegation, safe text rendering with <code>textContent</code>, element creation, and dynamic node deletion without full-page reloads.
+        </p>
+      </div>
+    </section>
+
+    <!-- Student Post Card -->
+    <article class="post-card" id="studentPostCard" aria-labelledby="postHeading">
+      
+      <!-- Post Author Header -->
+      <header class="post-header">
+        <div class="author-avatar" aria-hidden="true">SP</div>
+        <div class="author-details">
+          <div class="author-title-row">
+            <h2 class="author-name" id="authorName">Sanket Patil</h2>
+            <span class="author-branch-badge">TE • Computer Engineering</span>
+          </div>
+          <p class="post-timestamp">
+            <time datetime="2026-10-15T14:30:00+05:30">October 15, 2026 • 2:30 PM</time>
+            <span class="dot-separator" aria-hidden="true">•</span>
+            <span class="post-category">🏆 Campus Achievement &amp; Hackathon</span>
+          </p>
+        </div>
+      </header>
+
+      <!-- Post Body Content -->
+      <section class="post-body">
+        <h3 class="post-heading" id="postHeading">
+          KBTCOE Squad Secures 1st Prize at Smart India Hackathon (SIH 2026) Regional Round! 🚀
+        </h3>
+        <p class="post-text">
+          Extremely proud to share that our 6-member multidisciplinary team from MVPS's KBT College of Engineering won First Place in the Smart Automation Category at the SIH 2026 Regional Hackathon!
+        </p>
+        <p class="post-text">
+          Over 36 non-stop hours, we engineered a scalable IoT &amp; AI-driven municipal water telemetry system that detects pipeline pressure drops and forecasts contamination risks using lightweight edge computing models. Huge thanks to our faculty mentors and the KBTCOE Innovation Cell for their 24/7 technical guidance!
+        </p>
+
+        <!-- Topic Tags -->
+        <div class="post-tags" aria-label="Post Tags">
+          <span class="tag">#SIH2026</span>
+          <span class="tag">#IoT</span>
+          <span class="tag">#SmartCampus</span>
+          <span class="tag">#KBTCOEConnect</span>
+          <span class="tag">#EdgeAI</span>
+        </div>
+      </section>
+
+      <!-- Post Stats Bar -->
+      <footer class="post-footer">
+        <div class="post-stats-row">
+          <div class="stat-item" id="likeStatDisplay" aria-label="Total Likes">
+            <span class="stat-icon" aria-hidden="true">❤️</span>
+            <span id="statLikeCount" class="stat-count">24</span>
+            <span class="stat-label">likes</span>
+          </div>
+          <div class="stat-item" id="commentStatDisplay" aria-label="Total Comments">
+            <span class="stat-icon" aria-hidden="true">💬</span>
+            <span id="statCommentCount" class="stat-count">2</span>
+            <span class="stat-label">comments</span>
+          </div>
+        </div>
+
+        <!-- Interactive Action Bar -->
+        <div class="post-actions-toolbar" role="toolbar" aria-label="Post Actions">
+          
+          <!-- Live Like Toggle Button -->
+          <button 
+            type="button" 
+            id="btnLike" 
+            class="btn-action btn-like" 
+            aria-pressed="false"
+            aria-label="Like this post. Current count: 24"
+          >
+            <span class="heart-icon" aria-hidden="true">🤍</span>
+            <span class="btn-like-text">Like</span>
+            <span class="badge-count" id="likeCountBadge">24</span>
+          </button>
+
+          <!-- Jump to Comments Button -->
+          <a href="#commentsSection" class="btn-action btn-comment-jump" aria-label="Scroll to comments thread">
+            <span aria-hidden="true">💬</span>
+            <span>Comment</span>
+            <span class="badge-count" id="commentCountBadge">2</span>
+          </a>
+
+          <!-- Share Button (Auxiliary DOM demonstration) -->
+          <button 
+            type="button" 
+            id="btnShare" 
+            class="btn-action btn-share" 
+            aria-label="Share this post"
+          >
+            <span aria-hidden="true">🔗</span>
+            <span>Share</span>
+          </button>
+
+        </div>
+      </footer>
+    </article>
+
+    <!-- Dynamic Comments Section -->
+    <section class="comments-section" id="commentsSection" aria-labelledby="commentsHeading">
+      
+      <!-- Comments Section Header -->
+      <div class="comments-header-row">
+        <div class="comments-heading-group">
+          <h2 class="comments-heading" id="commentsHeading">
+            Discussion &amp; Feedback 
+            <span class="comments-count-pill">(<span id="headerCommentCount">2</span>)</span>
+          </h2>
+          <p class="comments-subtext">Share your thoughts, congratulate peers, or ask technical questions.</p>
+        </div>
+
+        <!-- Clear Comments Button -->
+        <div class="comments-actions-group">
+          <button 
+            type="button" 
+            id="btnClearComments" 
+            class="btn-ctrl btn-clear-all" 
+            aria-label="Clear all comments from this post"
+          >
+            🗑️ Clear All Comments
+          </button>
+        </div>
+      </div>
+
+      <!-- Add Comment Form Card -->
+      <div class="comment-composer-card">
+        <div class="composer-author-row">
+          <div class="composer-avatar" aria-hidden="true">TS</div>
+          <div class="composer-author-info">
+            <span class="composer-author-name">Tanmay Shinde</span>
+            <span class="composer-author-badge">Posting as Current Student</span>
+          </div>
+        </div>
+
+        <form id="commentForm" class="comment-form" novalidate aria-label="Post a new comment">
+          
+          <div class="form-group">
+            <label for="commentInput" class="form-label">
+              Your Comment <span class="required-indicator">*</span>
+            </label>
+            <textarea 
+              id="commentInput" 
+              class="comment-textarea" 
+              rows="3" 
+              maxlength="400"
+              placeholder="Write a constructive comment or question for Sanket..."
+              aria-describedby="commentCharCount commentError"
+              aria-required="true"
+            ></textarea>
+            
+            <div class="textarea-footer">
+              <span id="commentCharCount" class="char-counter" aria-live="polite">0 / 400</span>
+            </div>
+
+            <!-- Accessible Inline Validation Error Banner -->
+            <div id="commentError" class="input-error-message visually-hidden" role="alert" aria-atomic="true">
+              ⚠️ Please enter a comment before submitting. Whitespace-only submissions are not allowed.
+            </div>
+          </div>
+
+          <div class="composer-btn-row">
+            <button type="submit" id="btnSubmitComment" class="btn-primary-submit">
+              💬 Post Comment
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Empty State Card (Shown when 0 comments exist) -->
+      <div id="emptyCommentsState" class="empty-state-card visually-hidden" role="status">
+        <div class="empty-icon" aria-hidden="true">💭</div>
+        <h3 class="empty-title">No comments yet</h3>
+        <p class="empty-desc">
+          Be the first to share your congratulations or inquire about their hackathon architecture!
+        </p>
+      </div>
+
+      <!-- Comments Thread Container (Dynamic DOM Node Insertion & Event Delegation) -->
+      <div id="commentsList" class="comments-list" aria-live="polite" aria-label="Comments Thread">
+        
+        <!-- Demonstration Comment 1 (Seed Record) -->
+        <article class="comment-card" data-comment-id="seed-comment-1">
+          <div class="comment-header">
+            <div class="comment-avatar" aria-hidden="true">PR</div>
+            <div class="comment-meta">
+              <div class="comment-author-row">
+                <h4 class="comment-author">Pooja Raut</h4>
+                <span class="comment-branch-tag">BE • IT</span>
+              </div>
+              <time class="comment-time" datetime="2026-10-15T15:00:00+05:30">1 hour ago</time>
+            </div>
+            <button 
+              type="button" 
+              class="btn-delete-comment" 
+              data-action="delete"
+              aria-label="Delete comment by Pooja Raut"
+              title="Delete this comment"
+            >
+              🗑️ Delete
+            </button>
+          </div>
+          <div class="comment-body">
+            <p class="comment-text">Heartiest congratulations to the entire squad! The LoRaWAN telemetry aspect is especially brilliant. Would love to read an architecture breakdown on the KBTCOE Tech Blog.</p>
+          </div>
+        </article>
+
+        <!-- Demonstration Comment 2 (Seed Record) -->
+        <article class="comment-card" data-comment-id="seed-comment-2">
+          <div class="comment-header">
+            <div class="comment-avatar" aria-hidden="true">AD</div>
+            <div class="comment-meta">
+              <div class="comment-author-row">
+                <h4 class="comment-author">Aditya Deshmukh</h4>
+                <span class="comment-branch-tag">SE • Mech</span>
+              </div>
+              <time class="comment-time" datetime="2026-10-15T15:45:00+05:30">30 minutes ago</time>
+            </div>
+            <button 
+              type="button" 
+              class="btn-delete-comment" 
+              data-action="delete"
+              aria-label="Delete comment by Aditya Deshmukh"
+              title="Delete this comment"
+            >
+              🗑️ Delete
+            </button>
+          </div>
+          <div class="comment-body">
+            <p class="comment-text">Inspiring achievement! How did you handle the water flow sensor calibration under fluctuating pipeline pressure?</p>
+          </div>
+        </article>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container footer-flex">
+      <div class="footer-left">
+        <p>&copy; 2026 KBTCOE Connect — MVPS's KBT College of Engineering, Nashik. Practical Assignment 11.</p>
+        <p class="footer-subtext">Demonstrating Native JavaScript DOM Manipulation, Event Delegation, Safe Text Rendering, and Live State Counters.</p>
+      </div>
+      <div class="footer-right">
+        <span class="tech-badge">Vanilla JS DOM Engine</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

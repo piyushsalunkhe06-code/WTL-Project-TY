@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KBTCOE Connect — CSS Styling & Design System</title>
+
+  <!-- ======================================================================
+       DEMONSTRATION OF METHOD 3: EXTERNAL CSS
+       Linked via external stylesheet file (style.css) containing global styles,
+       resets, box model rules, class/ID selectors, and component styling.
+       ====================================================================== -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ======================================================================
+       DEMONSTRATION OF METHOD 2: INTERNAL CSS
+       Embedded within the document <head> inside a <style> block for
+       page-specific highlights, demonstration banners, and accents.
+       ====================================================================== -->
+  <style>
+    /* Internal CSS Demonstration Rule 1: Header subtext badge accent */
+    .internal-header-subtext {
+      color: #1E3A8A;
+      font-weight: 600;
+      letter-spacing: 0.25px;
+      background-color: #EFF6FF;
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 4px;
+      border: 1px dashed #93C5FD;
+      margin-top: 6px;
+      font-size: 0.85rem;
+    }
+
+    /* Internal CSS Demonstration Rule 2: Spotlight graduation status pill */
+    .internal-spotlight-ribbon {
+      background-color: #FEF3C7;
+      color: #92400E;
+      font-weight: 700;
+      font-size: 0.78rem;
+      padding: 3px 8px;
+      border-radius: 12px;
+      border: 1px solid #FCD34D;
+      display: inline-block;
+      text-transform: uppercase;
+    }
+
+    /* Internal CSS Demonstration Rule 3: Lab methodology notice container */
+    .method-callout-box {
+      background-color: #F0FDF4;
+      border: 1px solid #86EFAC;
+      border-left: 5px solid #16A34A;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      color: #14532D;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Main Header (ID Selector: #main-header) -->
+  <header id="main-header">
+    <div class="container">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+          <td width="45%" align="left">
+            <img src="kbtcoe-logo.svg" alt="Official KBTCOE Connect Vector Logo" class="header-logo" width="360" height="75">
+          </td>
+          <td width="55%" align="right" class="header-info">
+            <p><strong>MVP Samaj's K.B.T. College of Engineering, Nashik</strong></p>
+            <p><small>Affiliated to SPPU, Pune | Approved by AICTE, New Delhi</small></p>
+            <!-- Styled via Internal CSS -->
+            <span class="internal-header-subtext">Web Development Lab &mdash; Practical 03</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </header>
+
+  <!-- Global Portal Navigation (ID Selector: #portal-nav) -->
+  <nav id="portal-nav" aria-label="KBTCOE Connect Navigation Bar">
+    <div class="container" style="padding: 0;">
+      <ul class="nav-list">
+        <li class="nav-item"><a href="#student-profile-section" class="nav-link">Student Profile</a></li>
+        <li class="nav-item"><a href="#featured-blog" class="nav-link">Technical Blogs</a></li>
+        <li class="nav-item"><a href="#achievements-section" class="nav-link">Achievements</a></li>
+        <li class="nav-item"><a href="#opportunities-section" class="nav-link">Opportunities</a></li>
+        <li class="nav-item"><a href="#campus-aside" class="nav-link">Campus Notices</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content Layout -->
+  <main class="container">
+
+    <!-- Methodology Verification Card -->
+    <div class="method-callout-box">
+      <strong>CSS Architecture Demonstration Note:</strong> This page actively integrates all three cascading style methods:
+      <strong>(1) External CSS</strong> via <code>style.css</code>,
+      <strong>(2) Internal CSS</strong> via the <code>&lt;style&gt;</code> block in <code>&lt;head&gt;</code>, and
+      <strong>(3) Inline CSS</strong> applied directly to the campus alert banner below.
+    </div>
+
+    <!-- ======================================================================
+         DEMONSTRATION OF METHOD 1: INLINE CSS
+         Applied directly to the element via the style attribute
+         ====================================================================== -->
+    <div id="inline-css-announcement" 
+         style="background-color: #FFFBEB; color: #92400E; border: 2px solid #F59E0B; border-left: 8px solid #B45309; padding: 14px 18px; margin-bottom: 24px; border-radius: 6px; font-size: 0.95rem; line-height: 1.5;">
+      <strong>[DEMONSTRATION: INLINE CSS APPLIED] Notice from KBTCOE Training &amp; Placement Cell:</strong>
+      Registration for the 2026 Campus Placement &amp; Internship Season is now officially open. Complete all verified profile fields and skill assessments before <time datetime="2026-11-15">15 November 2026</time>.
+    </div>
+
+    <!-- 1. Student Profile Showcase (ID: #student-profile-section, Class: .card) -->
+    <section id="student-profile-section" class="card">
+      <div class="card-header">
+        <span class="badge badge-success">Verified Student Profile</span>
+        <!-- Styled via Internal CSS -->
+        <span class="internal-spotlight-ribbon">Batch 2026</span>
+        <h2 class="card-title">Snehal Rajesh Deshmukh</h2>
+        <p class="card-subtitle">
+          University PRN: <code>72183944C</code> &bull; Department of Information Technology &bull; Final Year (B.E.)
+        </p>
+      </div>
+
+      <div class="card-body">
+        <p>
+          Aspiring Software Development Engineer specializing in distributed system design, relational database modeling, and scalable RESTful API services. Lead coordinator of the KBTCOE ACM Student Chapter and technical peer mentor.
+        </p>
+
+        <h3>Verified Technical Skillset</h3>
+        <ul class="skill-list">
+          <li class="skill-tag">Java 17</li>
+          <li class="skill-tag">Spring Boot</li>
+          <li class="skill-tag">Node.js</li>
+          <li class="skill-tag">Express.js</li>
+          <li class="skill-tag">React.js</li>
+          <li class="skill-tag">MySQL 8</li>
+          <li class="skill-tag">RESTful APIs</li>
+          <li class="skill-tag">Docker</li>
+          <li class="skill-tag">Git &amp; GitHub</li>
+        </ul>
+
+        <h3>Academic &amp; Portfolio Presence</h3>
+        <p>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View GitHub Repositories</a>
+          &nbsp;
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Connect on LinkedIn</a>
+          &nbsp;
+          <a href="mailto:snehal.deshmukh@kbtcoe.org" class="btn btn-primary">Send Academic Email</a>
+        </p>
+      </div>
+
+      <div class="card-footer">
+        Profile verification ID: <code>KBT-IT-2022-044</code> &bull; CGPA: 9.24 / 10.00 &bull; Last updated: <time datetime="2026-10-14">14 October 2026</time>
+      </div>
+    </section>
+
+    <!-- 2. Technical Blogs Showcase (ID: #featured-blog, Class: .card) -->
+    <section id="featured-blog" class="card">
+      <div class="card-header">
+        <span class="badge badge-primary">Featured Technical Article</span>
+        <h2 class="card-title">Architecting Scalable REST APIs for Campus Portals using Node.js and MySQL</h2>
+        <p class="card-subtitle">
+          Authored by <strong>Snehal Deshmukh</strong> on <time datetime="2026-10-12">12 October 2026</time> &bull; <em>Reading Time: 6 minutes</em>
+        </p>
+      </div>
+
+      <div class="card-body">
+        <p>
+          During high-volume academic cycles (such as semester fee submissions, course registrations, and placement drives), collegiate web portals encounter intense concurrent traffic spikes. Without architectural decoupling, database connections can quickly saturate, inducing system brownouts.
+        </p>
+
+        <!-- Technical Diagram Figure with CSS styling -->
+        <figure class="tech-figure">
+          <img src="rest-architecture.svg" alt="Diagram illustrating 3-tier REST architecture: Client tier with React, API tier with Node/Express, and Database tier with MySQL" width="600" height="220">
+          <figcaption class="tech-caption">Figure 3.1: Layered connection pool architecture in KBTCOE Connect.</figcaption>
+        </figure>
+
+        <h3>Core Engineering Solutions</h3>
+        <ol>
+          <li><strong>Connection Pooling:</strong> Utilizing <code>mysql2/promise</code> pools to recycle active TCP connections and throttle peak traffic loads.</li>
+          <li><strong>Parameterized Query Enforcement:</strong> Eradicating SQL injection vectors by using strictly parameterized statements across all CRUD endpoints.</li>
+          <li><strong>Stateless Token Verification:</strong> Delegating authentication to compact, HMAC SHA-256 signed JSON Web Tokens (JWT).</li>
+        </ol>
+
+        <p style="margin-top: 14px;">
+          <a href="#featured-blog" class="btn btn-primary">Read Full Publication &rarr;</a>
+        </p>
+      </div>
+
+      <div class="card-footer">
+        Tags: <span class="skill-tag">Node.js</span><span class="skill-tag">MySQL</span><span class="skill-tag">System Design</span><span class="skill-tag">Security</span>
+      </div>
+    </section>
+
+    <!-- Second Technical Blog Article -->
+    <article class="card">
+      <div class="card-header">
+        <span class="badge badge-info">DevOps &amp; Best Practices</span>
+        <h2 class="card-title">Demystifying Git Branching Strategies for College Hackathon Teams</h2>
+        <p class="card-subtitle">
+          Authored by <strong>Rohit Sandip Patil</strong> on <time datetime="2026-09-28">28 September 2026</time> &bull; <em>Reading Time: 4 minutes</em>
+        </p>
+      </div>
+
+      <div class="card-body">
+        <p>
+          In fast-paced 36-hour hackathons, uncoordinated team commits often result in devastating merge conflicts. Implementing a disciplined 3-tier branch topology (<code>main</code>, <code>dev</code>, and <code>feature/*</code>) guarantees stability and ensures seamless live demonstrations for evaluating judges.
+        </p>
+        <p>
+          <a href="#main-header" class="btn btn-outline">Explore Hackathon Git Guide &rarr;</a>
+        </p>
+      </div>
+
+      <div class="card-footer">
+        Tags: <span class="skill-tag">Git</span><span class="skill-tag">Teamwork</span><span class="skill-tag">Hackathons</span>
+      </div>
+    </article>
+
+    <!-- 3. Student Achievements & Competitions -->
+    <section id="achievements-section" class="card">
+      <div class="card-header">
+        <span class="badge badge-warning">Campus Honors</span>
+        <h2 class="card-title">National Milestone: Smart India Hackathon (SIH) 2025 Regional Finalist</h2>
+        <p class="card-subtitle">Conferred on: <time datetime="2025-12-18">18 December 2025</time> &bull; Ministry of Education Innovation Cell</p>
+      </div>
+
+      <div class="card-body">
+        <p>
+          A multidisciplinary student squad from KBTCOE (comprising Computer, IT, and Mechanical engineering students) engineered an automated rooftop solar panel fault-detection system using drone thermal imaging and lightweight machine learning edge models.
+        </p>
+        <ul>
+          <li><strong>Squad Name:</strong> ByteCraft KBTCOE</li>
+          <li><strong>Problem Statement ID:</strong> SIH1422 (Renewable Energy)</li>
+          <li><strong>Achievement:</strong> Recognized as Regional 1st Runner-Up with an institutional cash award of INR 25,000.</li>
+        </ul>
+      </div>
+
+      <div class="card-footer">
+        Category: National Level Technical Hackathon &bull; Faculty Mentor: Dr. V. S. Pawar
+      </div>
+    </section>
+
+    <!-- 4. Opportunities & Training Bulletin Table -->
+    <section id="opportunities-section" class="card">
+      <div class="card-header">
+        <span class="badge badge-primary">Placement Portal</span>
+        <h2 class="card-title">Job &amp; Internship Opportunities Bulletin</h2>
+        <p class="card-subtitle">
+          <em>Official demonstration records curated for the KBTCOE Connect campus platform.</em>
+        </p>
+      </div>
+
+      <div class="card-body">
+        <table class="opportunity-table">
+          <caption>Table 3.1: Active Campus Placement &amp; Internship Opportunities (AY 2025-2026)</caption>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Position / Role</th>
+              <th>Organization</th>
+              <th>Eligible Branches</th>
+              <th>Location</th>
+              <th>Deadline</th>
+              <th>Application Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>JOB-301</strong></td>
+              <td>Graduate Trainee Engineer</td>
+              <td>Emerson Innovation Center</td>
+              <td>Computer, IT, Instrumentation</td>
+              <td>Nashik MIDC</td>
+              <td><time datetime="2026-11-25">25 Nov 2026</time></td>
+              <td><a href="https://emerson.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Apply Online</a></td>
+            </tr>
+            <tr>
+              <td><strong>INT-302</strong></td>
+              <td>Cloud Infrastructure Intern</td>
+              <td>Infosys Springboard Program</td>
+              <td>All Disciplines (TE, BE)</td>
+              <td>Virtual / Hybrid</td>
+              <td><time datetime="2026-12-01">01 Dec 2026</time></td>
+              <td><a href="https://infyspringboard.onwingspan.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Register Now</a></td>
+            </tr>
+            <tr>
+              <td><strong>CMP-303</strong></td>
+              <td>TCS CodeVita Season 14</td>
+              <td>Tata Consultancy Services</td>
+              <td>All Engineering Disciplines</td>
+              <td>Online Contest</td>
+              <td><time datetime="2026-12-15">15 Dec 2026</time></td>
+              <td><a href="https://tcscodevita.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Enroll Free</a></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th colspan="5">Total Verified Listings: 3 Active Opportunities</th>
+              <th colspan="2" style="text-align: right;">Coordinated by: KBTCOE T&amp;P Cell</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="card-footer">
+        Eligibility Notice: Students must maintain at least 75% classroom attendance for T&amp;P NOC issuance.
+      </div>
+    </section>
+
+    <!-- 5. Sidebar Tangential Notices Card -->
+    <aside id="campus-aside" class="sidebar-notice">
+      <h3>Administrative Campus Notices &amp; Examination Timetable</h3>
+      <p>
+        Savitribai Phule Pune University (SPPU) Semester VII In-Sem examinations commence on 
+        <time datetime="2026-11-02"><strong>02 November 2026</strong></time>. Hall tickets are available through the student ERP login.
+      </p>
+      <p>
+        <strong>KBTCOE Connect Community Standards:</strong> All technical publications must be original, peer-reviewed, and respectful of intellectual property rights.
+      </p>
+    </aside>
+
+  </main>
+
+  <!-- Site Footer (Class: .site-footer) -->
+  <footer class="site-footer">
+    <div class="container">
+      <h4>KBTCOE Connect &mdash; The Professional Network for KBTCOE Students</h4>
+      <p>
+        MVP Samaj's Karmaveer Adv. Baburao Ganpatrao Thakare College of Engineering<br>
+        Udoji Maratha Boarding Campus, Gangapur Road, Nashik &mdash; 422013, Maharashtra, India.
+      </p>
+      <p>
+        <strong>Portal Technical Helpdesk:</strong> <a href="mailto:connect.support@kbtcoe.org">connect.support@kbtcoe.org</a> | 
+        <strong>Training &amp; Placement Cell:</strong> <a href="mailto:tnp@kbtcoe.org">tnp@kbtcoe.org</a>
+      </p>
+      <hr>
+      <p align="center">
+        <small>
+          &copy; <time datetime="2026">2026</time> KBTCOE Connect. Developed for University Web Development Lab Evaluation.<br>
+          Demonstrating Inline, Internal, and External CSS &bull; All data records are synthetic demonstrations.
+        </small>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

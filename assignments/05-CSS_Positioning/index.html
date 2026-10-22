@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KBTCOE Connect — CSS Positioning &amp; Advanced Properties</title>
+
+  <!-- External Stylesheet for Positioning -->
+  <link rel="stylesheet" href="positioning.css">
+</head>
+<body>
+
+  <!-- ======================================================================
+       1. STICKY NAVIGATION BAR (position: sticky, top: 0, z-index: 100)
+       Remains pinned at the very top of the viewport when scrolling down.
+       ====================================================================== -->
+  <nav class="sticky-nav-wrapper" aria-label="Sticky Main Navigation">
+    <div class="container nav-container">
+      <div class="nav-brand-group">
+        <img src="kbtcoe-logo.svg" alt="Official KBTCOE Connect Banner Logo" class="nav-logo-img" width="220" height="46">
+        <span class="sticky-badge">Sticky (Top: 0)</span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="#profile" class="nav-menu-link">Profile</a></li>
+        <li><a href="#static-demo" class="nav-menu-link">Static Demo</a></li>
+        <li><a href="#blog-overflow" class="nav-menu-link">Blog &amp; Overflow</a></li>
+        <li><a href="#opportunities" class="nav-menu-link">Opportunities</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content Container -->
+  <main class="container" style="padding-top: 32px;">
+
+    <!-- Intro Header -->
+    <header style="margin-bottom: 24px;">
+      <h1>KBTCOE Connect Positioning Laboratory</h1>
+      <p>
+        Demonstrating all five CSS positioning schemes (<code>static</code>, <code>relative</code>, <code>absolute</code>, <code>fixed</code>, <code>sticky</code>), <code>z-index</code> stacking contexts, <code>overflow</code> control, <code>opacity</code>, <code>box-shadow</code>, <code>transform</code>, and <code>transition</code>.
+      </p>
+    </header>
+
+    <!-- ======================================================================
+         2. DEMONSTRATION 1: position: static (Default Normal Document Flow)
+         ====================================================================== -->
+    <section id="static-demo" class="demo-card-static">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+        <h4>Demonstration 1: position: static (Normal Document Flow)</h4>
+        <span style="background: #E2E8F0; color: #475569; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 4px;">STATIC</span>
+      </div>
+      <p style="margin: 0; font-size: 0.9rem;">
+        This container uses <code>position: static</code>, which is the browser's default layout mechanism. Elements are laid out strictly in the natural flow of the HTML document. Positioning offset properties (<code>top</code>, <code>bottom</code>, <code>left</code>, <code>right</code>) and <code>z-index</code> have <strong>no effect</strong> on statically positioned elements.
+      </p>
+    </section>
+
+    <!-- ======================================================================
+         3. DEMONSTRATION 2: position: relative & position: absolute
+         Avatar with absolutely positioned online status badge + Corner ribbon
+         ====================================================================== -->
+    <section id="profile" class="card-relative">
+      <!-- Absolute Corner Ribbon (positioned relative to .card-relative) -->
+      <div class="ribbon-absolute">VERIFIED</div>
+
+      <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 16px;">
+        <!-- Relative Avatar Wrapper containing absolute status badge -->
+        <div class="avatar-container">
+          <img src="student-avatar.svg" alt="Student Profile Avatar" class="avatar-image" width="76" height="76">
+          <!-- Absolutely positioned status badge -->
+          <span class="status-badge-absolute" title="Student is currently active on KBTCOE Connect">
+            <span class="status-dot"></span> ACTIVE
+          </span>
+        </div>
+
+        <div>
+          <h2 style="font-size: 1.35rem; margin-bottom: 4px;">Snehal Rajesh Deshmukh</h2>
+          <p style="font-size: 0.88rem; color: #64748B; margin-bottom: 2px;">
+            PRN: <code>72183944C</code> &bull; Department of Information Technology &bull; Final Year (B.E.)
+          </p>
+          <p class="muted-timestamp">
+            Last seen on campus network: <time datetime="2026-10-15T18:30">15 October 2026, 18:30 IST</time> (Hover for full opacity)
+          </p>
+        </div>
+      </div>
+
+      <p style="font-size: 0.92rem;">
+        The green <strong>ACTIVE</strong> status indicator above demonstrates <code>position: absolute</code> (pinned at <code>bottom: 0; right: 0;</code>), bound to its nearest positioned ancestor <code>.avatar-container</code> (which uses <code>position: relative</code>).
+      </p>
+
+      <div>
+        <span class="badge-tag">Java 17</span>
+        <span class="badge-tag">Spring Boot</span>
+        <span class="badge-tag">Node.js</span>
+        <span class="badge-tag">MySQL 8</span>
+        <span class="badge-tag">Docker</span>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4. DEMONSTRATION 3: overflow Control in Technical Blog Preview
+         ====================================================================== -->
+    <article id="blog-overflow" class="card-relative">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+        <span class="badge-tag" style="background-color: #FEF3C7; color: #92400E; border-color: #FDE68A;">Technical Architecture</span>
+        <span class="muted-timestamp"><time datetime="2026-10-12">12 October 2026</time></span>
+      </div>
+
+      <h2 style="font-size: 1.3rem; margin-bottom: 8px;">
+        Architecting Scalable REST APIs for Campus Portals using Node.js and MySQL
+      </h2>
+
+      <p style="font-size: 0.9rem;">
+        Below is a scrollable source-code preview demonstrating <strong>CSS <code>overflow-y: auto</code></strong> with a fixed maximum height (<code>max-height: 160px</code>). Content that exceeds the container height creates an internal custom scrollbar without expanding the parent card:
+      </p>
+
+      <!-- Scrollable Code Box Demonstrating overflow-y: auto -->
+      <div class="scrollable-preview-box" tabindex="0" aria-label="Code snippet scrollable box">
+// KBTCOE Connect — Database Connection Pool Controller
+// Demonstrating overflow-y: auto in constrained height
+const mysql = require('mysql2/promise');
+
+const pool = mysql.createPool({
+  host: process.env.DB_HOST || 'localhost',
+  user: process.env.DB_USER || 'kbtcoe_admin',
+  password: process.env.DB_PASSWORD,
+  database: 'kbtcoe_connect_db',
+  waitForConnections: true,
+  connectionLimit: 15,
+  queueLimit: 0
+});
+
+async function queryStudentsByBranch(departmentCode) {
+  const query = 'SELECT id, prn, full_name, email FROM profiles WHERE department = ? ORDER BY graduation_year DESC';
+  const [rows] = await pool.execute(query, [departmentCode]);
+  return rows;
+}
+
+module.exports = { pool, queryStudentsByBranch };
+      </div>
+
+      <p style="font-size: 0.88rem; color: #64748B;">
+        Scroll inside the code box above to inspect the complete connection pool configuration.
+      </p>
+
+      <div style="margin-top: 14px; display: flex; gap: 10px; align-items: center;">
+        <a href="#blog-overflow" class="btn btn-primary">Read Full Article</a>
+        <button class="btn btn-secondary btn-disabled-demo" title="Comments are locked on this preview">Comments Disabled (Opacity Demo)</button>
+      </div>
+    </article>
+
+    <!-- ======================================================================
+         5. DEMONSTRATION 4: Opportunities Bulletin (Hover Transforms & Shadows)
+         ====================================================================== -->
+    <section id="opportunities" class="card-relative">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+        <h2 style="font-size: 1.3rem;">Active Campus Opportunities</h2>
+        <span class="badge-tag" style="background-color: #DCFCE7; color: #166534; border-color: #BBF7D0;">T&amp;P Verified</span>
+      </div>
+
+      <p style="font-size: 0.9rem;">
+        Hover over this card to observe modern CSS <code>transform: translateY(-4px)</code> coupled with an expanded multi-layer <code>box-shadow</code> transition.
+      </p>
+
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Role</th>
+            <th>Company</th>
+            <th>Location</th>
+            <th>Deadline</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>JOB-501</strong></td>
+            <td>Graduate Trainee Engineer</td>
+            <td>Emerson Innovation Center</td>
+            <td>Nashik MIDC</td>
+            <td><time datetime="2026-11-25">25 Nov 2026</time></td>
+            <td><a href="#modal" class="btn btn-primary" style="padding: 4px 10px; font-size: 0.8rem;" onclick="openOpportunityModal('Graduate Trainee Engineer', 'Emerson')">Quick Apply</a></td>
+          </tr>
+          <tr>
+            <td><strong>INT-502</strong></td>
+            <td>Cloud Infrastructure Intern</td>
+            <td>Infosys Springboard</td>
+            <td>Virtual / Hybrid</td>
+            <td><time datetime="2026-12-01">01 Dec 2026</time></td>
+            <td><a href="#modal" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;" onclick="openOpportunityModal('Cloud Infrastructure Intern', 'Infosys')">Quick Apply</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Tall Filler Section to Demonstrate Scrolling & Sticky Navigation -->
+    <section class="card-relative" style="background: #FFFFFF; border-style: dashed;">
+      <h3 style="color: #64748B; font-size: 1rem; margin-bottom: 8px;">Extended Page Area for Scroll Testing</h3>
+      <p style="font-size: 0.88rem; color: #64748B;">
+        Scroll up and down to observe:
+      </p>
+      <ul style="margin-left: 20px; font-size: 0.88rem; color: #64748B;">
+        <li>The top navigation bar uses <strong><code>position: sticky; top: 0; z-index: 100</code></strong> and stays pinned.</li>
+        <li>The blue circular action button on the bottom-right uses <strong><code>position: fixed; z-index: 500</code></strong> and remains constant relative to the viewport.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- ======================================================================
+       6. PROPERTY DEMO: position: fixed (Floating Action Button - FAB)
+       Pinned at bottom: 32px; right: 32px; z-index: 500
+       ====================================================================== -->
+  <button class="fab-button" id="openModalFab" aria-label="Create new opportunity or post" title="Post New Opportunity">
+    +
+    <span class="fab-tooltip">Post Opportunity (Fixed FAB)</span>
+  </button>
+
+  <!-- ======================================================================
+       7. PROPERTY DEMO: Modal Overlay (position: fixed, z-index: 1000 & 1001)
+       Demonstrates backdrop overlay, absolute close button, transform transition
+       ====================================================================== -->
+  <div class="modal-overlay" id="opportunityModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-box" id="modalBox">
+      <!-- Close Button (position: absolute relative to .modal-box) -->
+      <button class="modal-close-btn" id="closeModalBtn" aria-label="Close modal window">&times;</button>
+
+      <h3 class="modal-title" id="modalTitle">Post New Opportunity</h3>
+      <p class="modal-desc">
+        Demonstrating a centered modal dialog using <code>position: fixed</code> backdrop with <code>z-index: 1000</code>, and <code>transform: scale()</code> transitions.
+      </p>
+
+      <form id="opportunityForm" onsubmit="event.preventDefault(); alert('Demo submission received! Modal will close.'); closeModal();">
+        <div class="form-group">
+          <label class="form-label" for="oppRole">Opportunity Title / Role:</label>
+          <input type="text" id="oppRole" class="form-input" placeholder="e.g., Summer Web Developer Intern" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="oppOrg">Company / Organization:</label>
+          <input type="text" id="oppOrg" class="form-input" placeholder="e.g., Nashik Innovation Hub" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="oppType">Opportunity Type:</label>
+          <select id="oppType" class="form-select" required>
+            <option value="Internship">Summer Internship</option>
+            <option value="FullTime">Full Time Placement</option>
+            <option value="Hackathon">National Hackathon</option>
+          </select>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="cancelModalBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Submit Opportunity</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer-section">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+      <div>
+        <p><strong>KBTCOE Connect</strong> &mdash; The Professional Network for KBTCOE Students</p>
+        <p><small>MVP Samaj's K.B.T. College of Engineering, Gangapur Road, Nashik &mdash; 422013</small></p>
+      </div>
+      <div>
+        <small>&copy; <time datetime="2026">2026</time> KBTCOE Connect &bull; Practical 05: CSS Positioning</small>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================================
+       8. Minimal Vanilla JavaScript for Modal Interaction & Accessibility
+       ====================================================================== -->
+  <script>
+    const modal = document.getElementById('opportunityModal');
+    const openFab = document.getElementById('openModalFab');
+    const closeBtn = document.getElementById('closeModalBtn');
+    const cancelBtn = document.getElementById('cancelModalBtn');
+    const oppRoleInput = document.getElementById('oppRole');
+    const oppOrgInput = document.getElementById('oppOrg');
+
+    function openModal() {
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+      setTimeout(() => oppRoleInput.focus(), 150);
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      openFab.focus();
+    }
+
+    function openOpportunityModal(role, org) {
+      oppRoleInput.value = role;
+      oppOrgInput.value = org;
+      openModal();
+    }
+
+    openFab.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    cancelBtn.addEventListener('click', closeModal);
+
+    // Close when clicking directly on the backdrop outside the modal box
+    modal.addEventListener('click', function(event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    // Close on Escape key press for accessibility
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,701 @@
+/* ==========================================================================
+   KBTCOE Connect — Community Post Feed Stylesheet (index.css)
+   Assignment 09: React Concepts
+   Design System: Navy #1E3A8A, Blue #2563EB, Surface #F8FAFC, Border #E2E8F0
+   ========================================================================== */
+
+/* 1. Global Reset & Box Model */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #0F172A;
+  background-color: #F8FAFC;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.feed-app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  width: 92%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* 2. Site Header */
+.site-header {
+  background-color: #FFFFFF;
+  border-bottom: 2px solid #E2E8F0;
+  padding: 14px 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.brand-logo {
+  max-width: 250px;
+  height: auto;
+  display: block;
+}
+
+.lab-badge {
+  background-color: #EFF6FF;
+  color: #1E3A8A;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid #BFDBFE;
+}
+
+/* 3. Hero Intro Section */
+.feed-main-content {
+  flex: 1;
+  padding: 32px 0 60px 0;
+}
+
+.feed-hero-intro {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.feed-page-title {
+  font-size: 2rem;
+  color: #1E3A8A;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.feed-page-subtitle {
+  color: #475569;
+  font-size: 0.98rem;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* 4. Live Statistics Dashboard Card */
+.feed-stats-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 28px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.stats-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  border-bottom: 1px solid #F1F5F9;
+  padding-bottom: 10px;
+}
+
+.stats-card-title {
+  font-size: 1rem;
+  color: #1E3A8A;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-seed-reset {
+  background-color: #F1F5F9;
+  color: #475569;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border: 1px solid #CBD5E1;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-seed-reset:hover {
+  background-color: #E2E8F0;
+  color: #0F172A;
+}
+
+.stats-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.metric-box {
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 2px;
+}
+
+.metric-value {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #1E3A8A;
+  line-height: 1.2;
+}
+
+.metric-subtext {
+  font-size: 0.72rem;
+  color: #94A3B8;
+  margin-top: 2px;
+}
+
+/* 5. Post Composer Form */
+.composer-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.composer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.composer-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1E3A8A;
+}
+
+.composer-badge {
+  background-color: #EFF6FF;
+  color: #2563EB;
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 12px;
+  border: 1px solid #BFDBFE;
+}
+
+.composer-alert {
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.composer-alert-error {
+  background-color: #FEF2F2;
+  color: #991B1B;
+  border-left: 3px solid #DC2626;
+}
+
+.composer-alert-success {
+  background-color: #F0FDF4;
+  color: #166534;
+  border-left: 3px solid #16A34A;
+}
+
+.composer-inputs-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.form-field-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.field-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 4px;
+}
+
+.required-star {
+  color: #DC2626;
+}
+
+.field-input,
+.field-select {
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  color: #0F172A;
+  background-color: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 6px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field-input:focus,
+.field-select:focus,
+.field-textarea:focus {
+  outline: none;
+  border-color: #2563EB;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.composer-textarea-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.field-textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: #0F172A;
+  background-color: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 6px;
+  resize: vertical;
+  min-height: 90px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.composer-footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.char-counter {
+  font-size: 0.78rem;
+  color: #64748B;
+}
+
+.btn-publish-post {
+  background-color: #1E3A8A;
+  color: #FFFFFF;
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-publish-post:hover {
+  background-color: #1E40AF;
+}
+
+.btn-publish-post:active {
+  transform: translateY(1px);
+}
+
+/* 6. Category Filter Bar */
+.feed-filter-section {
+  margin-bottom: 20px;
+}
+
+.filter-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.filter-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #1E3A8A;
+}
+
+.showing-indicator {
+  font-size: 0.85rem;
+  color: #64748B;
+}
+
+.category-filter-nav {
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.filter-pill-container {
+  display: flex;
+  gap: 10px;
+}
+
+.filter-pill-btn {
+  background-color: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  color: #475569;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.filter-pill-btn:hover {
+  border-color: #BFDBFE;
+  color: #1E3A8A;
+  background-color: #EFF6FF;
+}
+
+.filter-pill-btn:focus-visible {
+  outline: 2px solid #2563EB;
+  outline-offset: 2px;
+}
+
+.filter-pill-btn.active {
+  background-color: #1E3A8A;
+  color: #FFFFFF;
+  border-color: #1E3A8A;
+}
+
+.filter-pill-btn.active .pill-count {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+}
+
+.pill-count {
+  background-color: #F1F5F9;
+  color: #475569;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 10px;
+}
+
+/* 7. Post Stream & Cards */
+.posts-stream {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.post-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: slideIn 0.25s ease-out forwards;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.post-card:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  border-color: #BFDBFE;
+}
+
+.post-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.author-meta-block {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%);
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.author-name-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.post-author-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1E3A8A;
+}
+
+.user-author-tag {
+  background-color: #DCFCE7;
+  color: #15803D;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid #BBF7D0;
+}
+
+.post-dept-time {
+  font-size: 0.78rem;
+  color: #64748B;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+
+.dept-pill {
+  font-weight: 600;
+}
+
+.dot-separator {
+  color: #CBD5E1;
+}
+
+.post-timestamp {
+  color: #94A3B8;
+}
+
+.post-category-tag {
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 12px;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.cat-technical { background-color: #EFF6FF; color: #1E40AF; border: 1px solid #BFDBFE; }
+.cat-achievements { background-color: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; }
+.cat-events { background-color: #FAF5FF; color: #6B21A8; border: 1px solid #E9D5FF; }
+.cat-general { background-color: #F1F5F9; color: #334155; border: 1px solid #CBD5E1; }
+
+.post-body-text {
+  font-size: 0.95rem;
+  color: #334155;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.post-actions-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #F1F5F9;
+  padding-top: 12px;
+}
+
+.btn-like {
+  background-color: #F8FAFC;
+  border: 1.5px solid #E2E8F0;
+  color: #475569;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-like:hover {
+  background-color: #FFF1F2;
+  border-color: #FECDD3;
+  color: #E11D48;
+}
+
+.btn-like.liked {
+  background-color: #FFE4E6;
+  border-color: #FDA4AF;
+  color: #BE123C;
+}
+
+.btn-like:focus-visible {
+  outline: 2px solid #E11D48;
+  outline-offset: 2px;
+}
+
+.like-count {
+  font-variant-numeric: tabular-nums;
+}
+
+.btn-delete-post {
+  background: none;
+  border: 1px solid #FCA5A5;
+  background-color: #FEF2F2;
+  color: #B91C1C;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-delete-post:hover {
+  background-color: #FEE2E2;
+  color: #991B1B;
+}
+
+.sample-post-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #94A3B8;
+  background-color: #F1F5F9;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* 8. Empty State Container */
+.feed-empty-state {
+  background-color: #FFFFFF;
+  border: 2px dashed #CBD5E1;
+  border-radius: 12px;
+  padding: 48px 24px;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.empty-icon {
+  font-size: 2.8rem;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.empty-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1E3A8A;
+  margin-bottom: 6px;
+}
+
+.empty-desc {
+  color: #64748B;
+  font-size: 0.92rem;
+  max-width: 500px;
+  margin: 0 auto 18px auto;
+}
+
+.btn-reset-filter {
+  background-color: #1E3A8A;
+  color: #FFFFFF;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-reset-filter:hover {
+  background-color: #1E40AF;
+}
+
+/* 9. Site Footer */
+.site-footer {
+  background-color: #0F172A;
+  color: #94A3B8;
+  padding: 28px 0;
+  border-top: 3px solid #1E3A8A;
+  font-size: 0.88rem;
+  margin-top: auto;
+}
+
+.footer-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tech-badge {
+  background-color: #1E293B;
+  color: #38BDF8;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 12px;
+  border: 1px solid #334155;
+}
+
+/* 10. Responsive Breakpoints */
+@media (max-width: 768px) {
+  .stats-metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .composer-inputs-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .composer-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 540px) {
+  .stats-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-flex {
+    flex-direction: column;
+    text-align: center;
+  }
+}

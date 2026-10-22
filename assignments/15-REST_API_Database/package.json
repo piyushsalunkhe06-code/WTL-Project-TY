@@ -1,0 +1,28 @@
+{
+  "name": "15-rest-api-database",
+  "version": "1.0.0",
+  "description": "KBTCOE Connect — Persistent REST API with Node.js, Express, and MySQL (Assignment 15)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node test.js"
+  },
+  "keywords": [
+    "kbtcoe-connect",
+    "express",
+    "mysql2",
+    "jwt",
+    "rest-api",
+    "crud",
+    "authentication"
+  ],
+  "author": "Department of Information Technology, KBTCOE",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.11.3"
+  }
+}

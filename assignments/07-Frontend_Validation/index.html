@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KBTCOE Connect Student Registration — Demonstrating HTML5 form constraints and robust vanilla JavaScript validation for Practical Assignment 07.">
+  <title>Student Registration — KBTCOE Connect | Assignment 07</title>
+  
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Deferred JavaScript Validation Engine -->
+  <script src="validation.js" defer></script>
+</head>
+<body>
+
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="sr-only">Skip to main registration form</a>
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="container header-flex">
+      <div class="brand-container">
+        <img src="kbtcoe-logo.svg" alt="KBTCOE Connect Logo" class="brand-logo" width="240" height="42">
+      </div>
+      <div class="badge-container">
+        <span class="lab-badge">Assignment 07 — Frontend Validation</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main id="main-content" class="container">
+    
+    <!-- Hero Section -->
+    <header class="page-hero">
+      <h1 class="page-title">Student Account Registration</h1>
+      <p class="page-subtitle">
+        Join the professional networking community for students of MVPS's KBT College of Engineering. Complete the form below to create your student account.
+      </p>
+      <span class="demo-disclaimer-badge">Academic Demonstration • Client-Side Validation Only</span>
+    </header>
+
+    <!-- Accessible Live Region for Screen Reader Announcements -->
+    <div id="formLiveAlert" class="sr-only" aria-live="assertive" role="status"></div>
+
+    <!-- Success Feedback Card (Hidden by default, shown upon valid submission) -->
+    <article id="successFeedback" class="success-card" role="region" aria-label="Registration Success" hidden tabindex="-1">
+      <div class="success-banner-top">
+        <span class="success-icon" aria-hidden="true">✓</span>
+        <div>
+          <h3 class="success-title">Account Registration Successful!</h3>
+          <p style="color: #15803D; font-size: 0.9rem; font-weight: 600;">All client-side validation rules verified successfully.</p>
+        </div>
+      </div>
+
+      <p class="success-message">
+        Welcome to KBTCOE Connect! Your student registration details have been validated through our client-side validation pipeline. Below is a summary of the validated profile details:
+      </p>
+
+      <div class="summary-card">
+        <h4>Validated Profile Summary</h4>
+        <div id="submittedDataSummary">
+          <!-- Populated safely via JavaScript DOM textContent -->
+        </div>
+      </div>
+
+      <div class="notice-box">
+        <strong>⚠️ Security &amp; Privacy Notice:</strong> This is an educational frontend validation practical. No personal data, credentials, or passwords have been transmitted across any network or persisted in any database. Password inputs are omitted from previews and never logged.
+      </div>
+
+      <button type="button" id="registerAnotherBtn" class="btn-primary" style="max-width: 260px;">
+        Register Another Account
+      </button>
+    </article>
+
+    <!-- Registration Form Card -->
+    <section id="formCard" class="form-card" aria-label="Registration Form Section">
+      <div class="form-header">
+        <h2>Create Student Profile</h2>
+        <p>All fields marked with an asterisk (<span class="required-mark" aria-hidden="true">*</span>) are mandatory.</p>
+      </div>
+
+      <!-- Registration Form with novalidate so custom JS handles accessible validation states -->
+      <form id="registrationForm" novalidate autocomplete="off">
+        
+        <!-- Field 1: Full Name -->
+        <div class="form-group">
+          <label for="fullName" class="form-label">
+            <span>Full Name <span class="required-mark" aria-hidden="true">*</span></span>
+          </label>
+          <input 
+            type="text" 
+            id="fullName" 
+            name="fullName" 
+            class="form-input" 
+            placeholder="e.g., Aarav Sharma" 
+            required 
+            minlength="2" 
+            maxlength="60" 
+            aria-required="true" 
+            aria-describedby="fullNameHint fullNameError"
+          >
+          <span id="fullNameHint" class="field-hint">Enter your official name (2–60 characters; letters, spaces, hyphens).</span>
+          <span id="fullNameError" class="field-error" role="alert"></span>
+        </div>
+
+        <!-- Field 2: Student ID (Configurable Demonstration Rule) -->
+        <div class="form-group">
+          <label for="studentId" class="form-label">
+            <span>Student ID / Roll No <span class="required-mark" aria-hidden="true">*</span></span>
+          </label>
+          <input 
+            type="text" 
+            id="studentId" 
+            name="studentId" 
+            class="form-input" 
+            placeholder="e.g., KBT-2023-CS01" 
+            required 
+            aria-required="true" 
+            aria-describedby="studentIdHint studentIdError"
+          >
+          <span id="studentIdHint" class="field-hint">Configurable demonstration format: <code>KBT-YYYY-DEPTXX</code> (e.g., KBT-2023-CS01).</span>
+          <span id="studentIdError" class="field-error" role="alert"></span>
+        </div>
+
+        <!-- Field 3: Email Address -->
+        <div class="form-group">
+          <label for="email" class="form-label">
+            <span>Email Address <span class="required-mark" aria-hidden="true">*</span></span>
+          </label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            class="form-input" 
+            placeholder="e.g., student@example.com" 
+            required 
+            aria-required="true" 
+            aria-describedby="emailHint emailError"
+          >
+          <span id="emailHint" class="field-hint">Standard format check (user@domain.tld). Does not verify external mailbox existence.</span>
+          <span id="emailError" class="field-error" role="alert"></span>
+        </div>
+
+        <!-- Grid Row: Branch & Year of Study -->
+        <div class="form-grid-row">
+          
+          <!-- Field 4: Branch Dropdown -->
+          <div class="form-group">
+            <label for="branch" class="form-label">
+              <span>Engineering Department <span class="required-mark" aria-hidden="true">*</span></span>
+            </label>
+            <select 
+              id="branch" 
+              name="branch" 
+              class="form-select" 
+              required 
+              aria-required="true" 
+              aria-describedby="branchError"
+            >
+              <option value="">-- Select Department --</option>
+              <option value="Computer Engineering">Computer Engineering</option>
+              <option value="Information Technology">Information Technology</option>
+              <option value="Artificial Intelligence &amp; Data Science">Artificial Intelligence &amp; Data Science</option>
+              <option value="Electronics &amp; Telecommunication">Electronics &amp; Telecommunication</option>
+              <option value="Mechanical Engineering">Mechanical Engineering</option>
+              <option value="Civil Engineering">Civil Engineering</option>
+              <option value="Instrumentation Engineering">Instrumentation Engineering</option>
+            </select>
+            <span id="branchError" class="field-error" role="alert"></span>
+          </div>
+
+          <!-- Field 5: Year of Study Dropdown -->
+          <div class="form-group">
+            <label for="year" class="form-label">
+              <span>Year of Study <span class="required-mark" aria-hidden="true">*</span></span>
+            </label>
+            <select 
+              id="year" 
+              name="year" 
+              class="form-select" 
+              required 
+              aria-required="true" 
+              aria-describedby="yearError"
+            >
+              <option value="">-- Select Academic Year --</option>
+              <option value="First Year (FE)">First Year (FE)</option>
+              <option value="Second Year (SE)">Second Year (SE)</option>
+              <option value="Third Year (TE)">Third Year (TE)</option>
+              <option value="Final Year (BE)">Final Year (BE)</option>
+            </select>
+            <span id="yearError" class="field-error" role="alert"></span>
+          </div>
+
+        </div>
+
+        <!-- Grid Row: Password & Confirm Password -->
+        <div class="form-grid-row">
+          
+          <!-- Field 6: Password -->
+          <div class="form-group">
+            <label for="password" class="form-label">
+              <span>Password <span class="required-mark" aria-hidden="true">*</span></span>
+            </label>
+            <input 
+              type="password" 
+              id="password" 
+              name="password" 
+              class="form-input" 
+              placeholder="••••••••" 
+              required 
+              minlength="8" 
+              maxlength="128" 
+              aria-required="true" 
+              aria-describedby="passwordHint passwordError"
+            >
+            <span id="passwordHint" class="field-hint">Minimum 8 characters with at least one letter and one number.</span>
+            <span id="passwordError" class="field-error" role="alert"></span>
+          </div>
+
+          <!-- Field 7: Confirm Password -->
+          <div class="form-group">
+            <label for="confirmPassword" class="form-label">
+              <span>Confirm Password <span class="required-mark" aria-hidden="true">*</span></span>
+            </label>
+            <input 
+              type="password" 
+              id="confirmPassword" 
+              name="confirmPassword" 
+              class="form-input" 
+              placeholder="••••••••" 
+              required 
+              minlength="8" 
+              maxlength="128" 
+              aria-required="true" 
+              aria-describedby="confirmPasswordHint confirmPasswordError"
+            >
+            <span id="confirmPasswordHint" class="field-hint">Must match password exactly.</span>
+            <span id="confirmPasswordError" class="field-error" role="alert"></span>
+          </div>
+
+        </div>
+
+        <!-- Field 8: Terms and Conditions Checkbox -->
+        <div class="form-group checkbox-group">
+          <label class="checkbox-label" for="terms">
+            <input 
+              type="checkbox" 
+              id="terms" 
+              name="terms" 
+              class="form-checkbox" 
+              required 
+              aria-required="true" 
+              aria-describedby="termsError"
+            >
+            <span>
+              I agree to the KBTCOE Connect Terms of Use, Code of Conduct, and Academic Integrity Guidelines for student networking.
+            </span>
+          </label>
+          <span id="termsError" class="field-error" role="alert"></span>
+        </div>
+
+        <!-- Form Submission Actions -->
+        <div class="form-actions">
+          <button type="submit" id="submitBtn" class="btn-primary">
+            Create Student Account
+          </button>
+          <button type="button" id="resetFormBtn" class="btn-secondary">
+            Reset Form
+          </button>
+        </div>
+
+      </form>
+    </section>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container footer-flex">
+      <p>&copy; 2026 KBTCOE Connect — MVPS's KBT College of Engineering, Nashik. Academic Practical Assignment 07.</p>
+      <p>Demonstrating HTML5 Form Validation, Custom JavaScript Rules, Accessible Feedback, and RegEx.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KBTCOE Connect — Persistent REST API Console (Assignment 15)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-flex">
+      <div class="brand-container">
+        <img src="kbtcoe-logo.svg" alt="KBTCOE Connect Logo" class="brand-logo">
+      </div>
+      <div class="header-badges">
+        <div id="dbBadge" class="pill-badge badge-offline">
+          <span id="dbDot" class="status-dot dot-red"></span>
+          <span id="dbText">Checking MySQL...</span>
+        </div>
+        <div id="authBadge" class="pill-badge badge-auth">
+          <span id="authText">Guest User</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main class="main-layout container">
+    <section class="hero-section">
+      <span class="lab-pill">Assignment 15 &bull; Node.js, Express &amp; MySQL REST API</span>
+      <h1 class="page-title">Persistent REST API &amp; Database Console</h1>
+      <p class="page-desc">
+        Interact with relational database tables (<code>opportunities</code>, <code>users</code>, <code>posts</code>) using authenticated endpoints, JWT bearer tokens, and parameterized SQL queries.
+      </p>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <nav class="tabs-nav" aria-label="API Modules">
+      <button type="button" class="tab-btn active" data-tab="tab-opportunities">
+        Campus Opportunities
+      </button>
+      <button type="button" class="tab-btn" data-tab="tab-auth">
+        User Authentication &amp; JWT
+      </button>
+      <button type="button" class="tab-btn" data-tab="tab-posts">
+        Community Posts
+      </button>
+    </nav>
+
+    <!-- Two-Column Layout -->
+    <div class="dashboard-grid">
+      <!-- Left Column: Interactive Form & Data Panels -->
+      <div class="panels-column">
+
+        <!-- TAB 1: Opportunities -->
+        <div id="tab-opportunities" class="tab-content active">
+          <!-- Search & Filter Controls -->
+          <div class="panel-card">
+            <h2 class="panel-heading">Search &amp; Filter Opportunities</h2>
+            <div style="display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap;">
+              <input type="text" id="oppSearchQuery" class="form-input" placeholder="Search title or organization..." style="flex: 2; min-width: 180px;">
+              <select id="oppFilterCategory" class="form-select" style="flex: 1; min-width: 140px;">
+                <option value="">All Categories</option>
+                <option value="internship">Internship</option>
+                <option value="hackathon">Hackathon</option>
+                <option value="competition">Competition</option>
+                <option value="workshop">Workshop</option>
+              </select>
+              <button type="button" class="btn-secondary" id="btnFilterOpps">Filter</button>
+              <button type="button" class="btn-secondary" id="btnResetOpps">Reset</button>
+            </div>
+          </div>
+
+          <!-- Create Opportunity Form -->
+          <div class="panel-card">
+            <h2 class="panel-heading">Publish Opportunity to MySQL</h2>
+            <p class="panel-subtext">POST <code>/api/opportunities</code> (Inserts persistent record into MariaDB)</p>
+            <form id="createOppForm" novalidate>
+              <div class="form-group">
+                <label for="oppTitle" class="form-label">Title *</label>
+                <input type="text" id="oppTitle" class="form-input" placeholder="e.g. Google Summer Research Fellowship" required>
+              </div>
+              <div class="form-group">
+                <label for="oppOrg" class="form-label">Host Organization *</label>
+                <input type="text" id="oppOrg" class="form-input" placeholder="e.g. Google Research India" required>
+              </div>
+              <div class="form-group">
+                <label for="oppCat" class="form-label">Category *</label>
+                <select id="oppCat" class="form-select" required>
+                  <option value="">-- Select Category --</option>
+                  <option value="internship">Internship</option>
+                  <option value="hackathon">Hackathon</option>
+                  <option value="competition">Competition</option>
+                  <option value="workshop">Workshop</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="oppDesc" class="form-label">Description *</label>
+                <textarea id="oppDesc" class="form-textarea" placeholder="Opportunity summary..." required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="oppElig" class="form-label">Eligibility *</label>
+                <input type="text" id="oppElig" class="form-input" placeholder="e.g. Open to TE and BE students" required>
+              </div>
+              <div class="form-group">
+                <label for="oppDeadline" class="form-label">Application Deadline</label>
+                <input type="date" id="oppDeadline" class="form-input">
+              </div>
+              <button type="submit" class="btn-primary-action">Insert into Database</button>
+            </form>
+          </div>
+
+          <!-- Opportunities List -->
+          <div>
+            <h3 style="font-size: 1.15rem; font-weight: 800; color: #1E3A8A; margin-bottom: 0.5rem;" id="oppsListHeader">
+              Persistent Opportunities
+            </h3>
+            <div id="opportunitiesList" class="cards-list">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: Authentication & JWT -->
+        <div id="tab-auth" class="tab-content" style="display: none;">
+          <!-- Quick Login Demo Bar -->
+          <div class="panel-card" style="background-color: #EFF6FF; border-color: #BFDBFE;">
+            <h2 class="panel-heading" style="font-size: 1rem;">Demo Credentials Quick Login</h2>
+            <p style="font-size: 0.85rem; color: #334155; margin-bottom: 0.75rem;">
+              Click below to immediately log in as one of the pre-seeded users (Password: <code>Password123!</code>):
+            </p>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button type="button" class="btn-secondary" id="btnQuickLoginSanket" style="background: #FFFFFF;">
+                Log in as Sanket Patil (TE IT)
+              </button>
+              <button type="button" class="btn-secondary" id="btnQuickLoginTanvi" style="background: #FFFFFF;">
+                Log in as Tanvi Kulkarni (BE Comp)
+              </button>
+            </div>
+          </div>
+
+          <!-- Active Session Info Card -->
+          <div class="panel-card">
+            <h2 class="panel-heading">Current Session Identity</h2>
+            <div id="authSessionInfo" style="font-size: 0.875rem; color: #475569; margin-bottom: 1rem;">
+              No active session. You are browsing as a guest.
+            </div>
+            <div style="display: flex; gap: 0.5rem;">
+              <button type="button" class="btn-secondary" id="btnFetchMe">
+                GET /api/auth/me (Verify Token)
+              </button>
+              <button type="button" class="btn-secondary" id="btnLogout" style="color: #DC2626;">
+                Clear Session Token
+              </button>
+            </div>
+          </div>
+
+          <!-- Register Form -->
+          <div class="panel-card">
+            <h2 class="panel-heading">Register New Student Account</h2>
+            <p class="panel-subtext">POST <code>/api/auth/register</code> (Hashes password via scrypt into MySQL)</p>
+            <form id="registerForm" novalidate>
+              <div class="form-group">
+                <label for="regName" class="form-label">Full Name *</label>
+                <input type="text" id="regName" class="form-input" placeholder="e.g. Rutuja Shinde" required>
+              </div>
+              <div class="form-group">
+                <label for="regEmail" class="form-label">College Email *</label>
+                <input type="email" id="regEmail" class="form-input" placeholder="rutuja.shinde@kbtcoe.org" required>
+              </div>
+              <div class="form-group">
+                <label for="regPass" class="form-label">Password * (min 8 chars)</label>
+                <input type="password" id="regPass" class="form-input" placeholder="••••••••" required>
+              </div>
+              <div class="form-group">
+                <label for="regBranch" class="form-label">Branch *</label>
+                <select id="regBranch" class="form-select" required>
+                  <option value="Information Technology">Information Technology</option>
+                  <option value="Computer Engineering">Computer Engineering</option>
+                  <option value="Electronics & Telecommunication">Electronics &amp; Telecommunication</option>
+                  <option value="Mechanical Engineering">Mechanical Engineering</option>
+                  <option value="Civil Engineering">Civil Engineering</option>
+                  <option value="AI & Data Science">AI &amp; Data Science</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="regYear" class="form-label">Academic Year *</label>
+                <select id="regYear" class="form-select" required>
+                  <option value="FE">First Year (FE)</option>
+                  <option value="SE">Second Year (SE)</option>
+                  <option value="TE" selected>Third Year (TE)</option>
+                  <option value="BE">Final Year (BE)</option>
+                </select>
+              </div>
+              <button type="submit" class="btn-primary-action">Register Account</button>
+            </form>
+          </div>
+
+          <!-- Login Form -->
+          <div class="panel-card">
+            <h2 class="panel-heading">Authenticate (Log In)</h2>
+            <p class="panel-subtext">POST <code>/api/auth/login</code> (Validates hash &amp; receives JWT)</p>
+            <form id="loginForm" novalidate>
+              <div class="form-group">
+                <label for="loginEmail" class="form-label">Email Address *</label>
+                <input type="email" id="loginEmail" class="form-input" placeholder="sanket.patil@kbtcoe.org" required>
+              </div>
+              <div class="form-group">
+                <label for="loginPass" class="form-label">Password *</label>
+                <input type="password" id="loginPass" class="form-input" placeholder="••••••••" required>
+              </div>
+              <button type="submit" class="btn-primary-action">Authenticate &amp; Receive JWT</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- TAB 3: Community Posts -->
+        <div id="tab-posts" class="tab-content" style="display: none;">
+          <!-- Create Post Form -->
+          <div class="panel-card">
+            <h2 class="panel-heading">Create Community Post</h2>
+            <p class="panel-subtext">POST <code>/api/posts</code> (Requires Bearer JWT; derives author ID from token)</p>
+            <form id="createPostForm" novalidate>
+              <div class="form-group">
+                <label for="postTitle" class="form-label">Post Title *</label>
+                <input type="text" id="postTitle" class="form-input" placeholder="e.g. SIH 2026 Telemetry Architecture Notes" required>
+              </div>
+              <div class="form-group">
+                <label for="postCat" class="form-label">Post Category *</label>
+                <select id="postCat" class="form-select" required>
+                  <option value="technical">Technical</option>
+                  <option value="achievement">Achievement</option>
+                  <option value="event">Campus Event</option>
+                  <option value="general" selected>General</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="postContent" class="form-label">Content *</label>
+                <textarea id="postContent" class="form-textarea" placeholder="Share your experience or announcement..." required></textarea>
+              </div>
+              <button type="submit" class="btn-primary-action">Publish Community Post</button>
+            </form>
+          </div>
+
+          <!-- Posts List -->
+          <div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+              <h3 style="font-size: 1.15rem; font-weight: 800; color: #1E3A8A;" id="postsListHeader">
+                Community Discussions
+              </h3>
+              <button type="button" class="btn-secondary" id="btnRefreshPosts">
+                &#8635; Refresh Feed
+              </button>
+            </div>
+            <div id="postsList" class="cards-list">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Live API Response Inspector -->
+      <div class="inspector-column">
+        <aside class="inspector-card" aria-label="API Response Inspector">
+          <div class="inspector-header">
+            <span style="font-size: 0.8rem; font-weight: 800; color: #94A3B8; text-transform: uppercase;">
+              Live Response Console
+            </span>
+            <span id="responseStatusBadge" class="status-badge status-2xx">HTTP 200 OK</span>
+          </div>
+          <div style="font-size: 0.75rem; color: #94A3B8; margin-bottom: 0.5rem;" id="responseMeta">
+            Endpoint: GET /api/health &bull; Duration: 2ms
+          </div>
+          <pre id="responseOutput" class="inspector-pre">Initializing application...</pre>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-flex">
+      <div>
+        <strong>KBTCOE Connect</strong> &bull; Assignment 15: Node.js, Express &amp; MySQL REST API
+      </div>
+      <div>
+        MVPS's KBTCOE Nashik &bull; Department of Information Technology
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
