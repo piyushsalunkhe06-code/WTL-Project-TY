@@ -1,20 +1,20 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "services": {
-    "8-react_spa": {
+    "react-spa": {
       "root": "assignments/08-React_SPA",
       "framework": "vite"
     },
-    "9-react_concepts": {
+    "react-concepts": {
       "root": "assignments/09-React_Concepts",
       "framework": "vite"
     },
-    "4-node_express_server": {
+    "node-express-server": {
       "root": "assignments/14-Node_Express_Server",
       "framework": "express",
       "entrypoint": "server.js"
     },
-    "5-rest_api_database": {
+    "rest-api-database": {
       "root": "assignments/15-REST_API_Database",
       "framework": "express",
       "entrypoint": "server.js"
