@@ -132,4 +132,7 @@ if (require.main === module) {
   process.on('SIGTERM', () => shutdown('SIGTERM'));
 }
 
-module.exports = { app, server, PORT };
+module.exports = app;
+module.exports.app = app;
+module.exports.server = server;
+module.exports.PORT = PORT;

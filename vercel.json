@@ -1,0 +1,46 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "8-react_spa": {
+      "root": "assignments/08-React_SPA",
+      "framework": "vite"
+    },
+    "9-react_concepts": {
+      "root": "assignments/09-React_Concepts",
+      "framework": "vite"
+    },
+    "4-node_express_server": {
+      "root": "assignments/14-Node_Express_Server",
+      "framework": "express",
+      "entrypoint": "server.js"
+    },
+    "5-rest_api_database": {
+      "root": "assignments/15-REST_API_Database",
+      "framework": "express",
+      "entrypoint": "server.js"
+    },
+    "client": {
+      "root": "assignments/16-KBTCOE_Connect_Final_Project/client",
+      "framework": "vite"
+    },
+    "server": {
+      "root": "assignments/16-KBTCOE_Connect_Final_Project/server",
+      "framework": "express",
+      "entrypoint": "server.js"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": {
+        "service": "server"
+      }
+    },
+    {
+      "source": "/(.*)",
+      "destination": {
+        "service": "client"
+      }
+    }
+  ]
+}
